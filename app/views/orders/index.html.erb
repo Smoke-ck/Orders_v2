@@ -1,0 +1,20 @@
+<h1 class="main__title">All orders</h1>
+    <h2> <%=@user.email%></h2>    
+    <div class="orders__wrapper">
+    <% @orders.each do |order| %>
+        <div class="card-body"> 
+            <h3 class="card__title"><%=order.where%> </h3>
+            <div class="card-body__controll">
+                <%= link_to 'Show', order, :class => "card-body__controll--button btn btn-primary" %>
+                <%= button_to order_path(order),:class => "card-body__controll--button btn btn-primary", method: :delete do %>Delete<% end %>
+                <%= button_to is_active_order_path(order),:class => "card-body__controll--button btn btn-primary", method: :put do %>
+                    <%if order.active == true %>
+                        Active
+                    <%else%>
+                        Done
+                    <%end%>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+    </div>

@@ -1,0 +1,18 @@
+<div class="show">
+  <h2 class="show__title">
+    <%= @order.where%>
+  </h2>
+  <p>
+    <%= @order.body%>
+  </p>
+   <p>
+    Status: 
+      <% if @order.active ==  true %>
+        Active
+      <%else%> 
+        Done
+      <%end%>
+  </p>
+</div>
+
+
