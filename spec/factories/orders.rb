@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :order do
-    where { "MyString" }
-    chek_out_time { "MyString" }
+    title { "MyString" }
+    check_out { "14:00" }
     active { false }
     body { "MyText" }
     user { nil }

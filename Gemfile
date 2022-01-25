@@ -78,3 +78,4 @@ group :development, :test do
 end
 gem "devise"
 gem 'sass-rails'
+gem 'slim'

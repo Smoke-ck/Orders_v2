@@ -25,17 +25,25 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.build(order_params)
+    respond_to do |format|
       if @order.save
-        redirect_to orders_path
+        format.html { redirect_to order_path(@order), notice: "Order was successfully created." }
+        format.json { render :show, status: :created, location: @order }
       else
-       render :new
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
       end
+    end
   end
 
   def destroy
     @order = current_user.orders.find_by id:(params[:id])
     @order.destroy
-    redirect_to orders_path
+
+    respond_to do |format|
+      format.html { redirect_to orders_path, notice: "Order was successfully destroyed." }
+      format.json { head :no_content }
+    end
   end
 
   def is_active
@@ -50,7 +58,7 @@ class OrdersController < ApplicationController
   private
 
     def order_params
-      params.require(:order).permit(:where, :check_out_time, :body, :active)
+      params.require(:order).permit(:title, :check_out, :body, :active)
     end
 end
 
