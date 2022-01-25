@@ -69,11 +69,13 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "timecop"
 end
 
 group :development, :test do
   gem "rspec-rails"
   gem 'database_cleaner'
+  gem 'pry-rails'
   gem "factory_bot_rails"
 end
 gem "devise"

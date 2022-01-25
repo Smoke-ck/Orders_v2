@@ -1,4 +1,5 @@
 .show
   h2.show__title= @order.title
   p= @order.body
+  p Check out time: #{@order.check_out}
   p= @order.active == true ? ' Status: Active' : 'Status: Done'
