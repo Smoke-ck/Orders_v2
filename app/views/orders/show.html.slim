@@ -1,6 +1,4 @@
 .show
-  h2.show__title = @order.title
-  p = @order.body
-  p = @order.active == true ? ' Status: Active' : 'Status: Done'
-
-      
+  h2.show__title= @order.title
+  p= @order.body
+  p= @order.active == true ? ' Status: Active' : 'Status: Done'

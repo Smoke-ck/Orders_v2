@@ -1,12 +1,10 @@
 h1.main__title Current orders
 -@orders.each do |order|
   .card-body
-    h3.card__title = order.title
-    h2 = order.user.email
+    h3.card__title= order.title
+    h2= order.user.email
     -if @user.id == order.user_id
       .card-body__controll
         = link_to 'Show', order, class: "card-body__controll--button btn btn-primary" 
         = button_to "Delete", order_path(order), class: "card-body__controll--button btn btn-primary", method: :delete
         = button_to "Active", is_active_order_path(order), class: "card-body__controll--button btn btn-primary", method: :put
-    -else
-    

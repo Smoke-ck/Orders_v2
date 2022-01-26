@@ -1,7 +1,7 @@
 h1.main__title All orders 
-h2 = @user.email 
+h2= @user.email 
 .orders__wrapper
-  -@orders.each do |order| 
+  - @orders.each do |order| 
     .card-body 
       h3.card__title= order.title
       .card-body__controll
