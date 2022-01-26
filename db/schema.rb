@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2022_01_23_170315) do
   enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
-    t.string "where"
-    t.string "chek_out_time"
+    t.string "title"
+    t.datetime "check_out", precision: 6
     t.boolean "active"
     t.text "body"
     t.bigint "user_id", null: false

@@ -1,0 +1,10 @@
+h1.main__title All orders 
+h2= @user.email 
+.orders__wrapper
+  - @orders.each do |order| 
+    .card-body 
+      h3.card__title= order.title
+      .card-body__controll
+         = link_to 'Show', order, class: "card-body__controll--button btn btn-primary" 
+         = button_to "Delete", order_path(order), class: "card-body__controll--button btn btn-primary", method: :delete
+         = button_to  order.active == true ?"Active":'Done', is_active_order_path(order), class: "card-body__controll--button btn btn-primary", method: :put
