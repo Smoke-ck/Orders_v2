@@ -1,13 +1,11 @@
-h1.main__title All orders 
+h1.main__title =t(".title")
 h2= @user.email 
 .orders__wrapper
   - @orders.each do |order| 
     .card-body 
       h3.card__title= order.title
       .card-body__controll
-         = link_to 'Show', order,
-         class: "card-body__controll--button btn btn-primary"
-         = button_to "Delete", order_path(order),
-         class: "card-body__controll--button btn btn-primary", method: :delete
-         = button_to  order.active == true ? "Active" : 'Done', actived_order_path(order),
-         class: "card-body__controll--button btn btn-primary", method: :put
+         = link_to t("global.button.show"), order, class: "btn btn-primary mr-2"
+         = button_to t("global.button.delete"), order_path(order), class: "btn btn-primary mr-2", method: :delete
+         = button_to order.active == true ? t("global.button.active"): t("global.button.done"),actived_order_path(order),
+          class: "btn btn-primary", method: :put

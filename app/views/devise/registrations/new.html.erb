@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h4>Registration</h4>
+    <h4><%=t("devise.registrations.new.sign_up")%></h4>
   </div>
   <div class="card-body">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { data: { turbo: false} } ) do |f| %>
@@ -25,7 +25,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up", class:"btn btn-secondary" %>
+    <%= f.submit t('devise.registrations.new.sign_up'), class:"btn btn-secondary" %>
   </div>
 <% end %>
   </div>

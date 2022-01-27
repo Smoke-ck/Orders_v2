@@ -1,0 +1,42 @@
+ru:
+  en: Английский
+  uk: Украинский
+  ru: Русский
+  activerecord:
+        attributes:
+          order:
+            title: Откуда
+            check_out: Активний до
+            body: Текст
+            active: Активный
+        errors:
+          models:
+            order:
+              attributes:
+                check_out:
+                  blank: "- время, до которого ордер будет активный"
+  global:
+    button:
+      show: Просмотреть
+      delete: Удалить
+      active: Активно
+      done: Выполнено
+      back: Назад
+    status:
+      active: "Статус: Активно"
+      dode: "Статус: Выполнено"
+  menu:
+    home: Главная
+    new: Создать новый ордер
+    current: Активный ордер
+    history: История выполненых
+  orders:
+    index:
+      title: Все ордера
+    new:
+      title: Новый ордер
+    show:
+    active:
+      title: Активный ордер
+    history:
+      title: История выполненых
