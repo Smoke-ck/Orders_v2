@@ -61,5 +61,3 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:title, :check_out, :body, :active)
     end
 end
-
-

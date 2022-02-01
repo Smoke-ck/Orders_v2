@@ -31,4 +31,3 @@ RSpec.describe User, type: :model do
         expect(@user.orders.should == [order])
     end
 end
-
