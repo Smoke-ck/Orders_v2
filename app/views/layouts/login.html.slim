@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title Devise OTP
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+  body.login
+    .container
+      .row
+        .col-md-3
+        .col-6.center
+          = render "devise/shared/navbar"
+          - flash.each do |key, message|
+            p.alert.alert-success
+              = message
+      .row
+        .col-md-3
+        .col-md-6
+          = yield

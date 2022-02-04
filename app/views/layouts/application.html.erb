@@ -14,6 +14,9 @@
   <body>
     <div class="container"> 
       <%= render "devise/shared/navbar" %>
+      <%flash.each do |key, message|%>
+        <p class="alert alert-success"> <%= message %></p>
+      <%end%>
       <%= yield %>
     </div>
   </body>

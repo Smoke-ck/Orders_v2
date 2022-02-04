@@ -1,0 +1,13 @@
+ = form_for :multi_factor_authentication, url: multi_factor_authentication_path,  method: :delete, html: { class: "form-inline" }  do |f|
+    .modal-dialog
+      .modal-content
+        .modal-header
+          = link_to "Close", multi_factor_authentication_path, class: "btn btn-secondary"
+          h4.modal-title Disable Two Factor Authentication
+        .modal-body
+          hr
+          .form-group
+            .text-center
+              = f.text_field :otp_code_token, placeholder: "Verify Token", class: "form-control input-lg", autofocus: true
+        .modal-footer
+          = f.submit "Disable Two Factor", class: "btn btn-lg btn-block btn-primary"

@@ -1,0 +1,23 @@
+ = form_for :multi_factor_authentication, url: multi_factor_authentication_path, html: { class: "form-inline" }  do |f|
+    .modal-dialog
+      .modal-content
+        .modal-header
+          = link_to "Close", multi_factor_authentication_path, class: "btn btn-secondary"
+          h4.modal-title Enable Two Factor Authentication
+        .modal-body
+          - unless current_user.otp_module_enabled?
+            - qr = RQRCode::QRCode.new(current_user.provisioning_uri, size: 10, level: :h )
+            table.qr
+              - qr.modules.each_index do |x|
+                tr
+                  - qr.modules.each_index do |y|
+                    - if qr.dark?(x,y)
+                      td.black
+                    - else
+                      td.white
+            hr
+          .form-group
+            .text-center
+              = f.text_field :otp_code_token, placeholder: "Verify Token", class: "form-control input-lg",  autofocus: true
+        .modal-footer
+          = f.submit "Enable Two Factor", class: "btn btn-lg btn-block btn-primary"

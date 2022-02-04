@@ -1,0 +1,7 @@
+.card
+  .card-header Two Factor Authentication
+  .card-body
+    = form_for(resource, as: resource_name, url: session_path(resource_name), method: :post) do |f|
+      = f.text_field :otp_code_token, placeholder: "Token", class: "form-control mb-3", autofocus: true
+      .actions
+        = f.submit "Login", class: "btn btn-primary mt-2"

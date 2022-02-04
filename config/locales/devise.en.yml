@@ -128,6 +128,7 @@ en:
         forgot_your_password: Forgot your password?
         sign_in: Log in
         sign_out: Log out
+        edit: Edit Account
         sign_in_with_provider: Sign in with %{provider}
         sign_up: Sign up
       minimum_password_length:

@@ -46,8 +46,10 @@ gem "bootsnap", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+gem "active_model_otp"
 gem "devise"
 gem "rails-i18n"
+gem "rqrcode_png", git: "https://github.com/DCarper/rqrcode_png.git"
 gem "sass-rails"
 gem "slim"
 

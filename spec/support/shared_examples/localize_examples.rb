@@ -1,4 +1,4 @@
-RSpec.shared_examples 'i18n' do
+RSpec.shared_examples "i18n" do
   describe I18n do
     context "en" do
       let(:localized_url) { url + "?locale=en" }
