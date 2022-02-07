@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Order < ApplicationRecord
   belongs_to :user
   validates :title, presence: true, length: { minimum: 2 }

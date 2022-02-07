@@ -79,6 +79,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ast (2.4.2)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.10.2)
@@ -179,6 +180,9 @@ GEM
       racc (~> 1.4)
     oauth (0.5.8)
     orm_adapter (0.5.0)
+    parallel (1.21.0)
+    parser (3.1.0.0)
+      ast (~> 2.4.1)
     pg (1.2.3)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -218,6 +222,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
+    rainbow (3.1.1)
     rake (13.0.6)
     regexp_parser (2.2.0)
     reline (0.3.1)
@@ -248,6 +253,20 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.3)
+    rubocop (1.25.1)
+      parallel (~> 1.10)
+      parser (>= 3.1.0.0)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml
+      rubocop-ast (>= 1.15.1, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.15.1)
+      parser (>= 3.0.1.1)
+    rubocop-rspec (2.8.0)
+      rubocop (~> 1.19)
+    ruby-progressbar (1.11.0)
     ruby-trello (2.3.1)
       activemodel (>= 3.2.0)
       addressable (~> 2.3)
@@ -334,6 +353,8 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.1)
   rspec-rails
+  rubocop
+  rubocop-rspec
   sass-rails
   selenium-webdriver
   slim

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -37,7 +39,7 @@ gem "jbuilder"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -50,14 +52,19 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "database_cleaner"
+  gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem "factory_bot_rails"
+  gem "pry-rails"
+  gem "rspec-rails"
+  gem "rubocop"
+  gem "rubocop-rspec"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
   gem "github_workflow", git: "https://github.com/daisybill/github_workflow.git", ref: "d4e327d8d30f2ce36036d75c75f0e38d96f5d961"
-
+  gem "web-console"
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
@@ -69,16 +76,9 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  gem "webdrivers"
   gem "timecop"
-end
-
-group :development, :test do
-  gem "rspec-rails"
-  gem 'database_cleaner'
-  gem 'pry-rails'
-  gem "factory_bot_rails"
+  gem "webdrivers"
 end
 gem "devise"
-gem 'sass-rails'
-gem 'slim'
+gem "sass-rails"
+gem "slim"
