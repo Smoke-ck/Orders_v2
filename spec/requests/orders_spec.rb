@@ -1,15 +1,17 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "Orders", type: :request do
-  let(:attributes) {
+  let(:attributes) do
     {
-      title: 'A Order Title',
-      check_out: "14:00" ,
-      active: false ,
+      title: "A Order Title",
+      check_out: "14:00",
+      active: false,
       body: "MyText"
     }
-  }
-  let(:user) { create(:user, email: "BenJohns@gmail.com", password:"123456") }
+  end
+  let(:user) { create(:user, email: "BenJohns@gmail.com", password: "123456") }
   let(:order) { create(:order, user: user) }
 
   before { sign_in user }
@@ -61,8 +63,8 @@ RSpec.describe "Orders", type: :request do
     context "with invalid parameters" do
       let(:attributes) do
         {
-          title: '',
-          check_out: "" ,
+          title: "",
+          check_out: "",
           body: ""
         }
       end

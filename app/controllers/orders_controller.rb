@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
-    before_action :authenticate_user!
+  before_action :authenticate_user!
   def index
     @user = current_user
     @orders = current_user.orders.order(created_at: :desc)
@@ -15,13 +17,12 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = current_user.orders.find_by id:(params[:id])
+    @order = current_user.orders.find_by id: params[:id]
   end
 
   def new
     @order = Order.new
   end
-
 
   def create
     @order = current_user.orders.build(order_params)
@@ -37,7 +38,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order = current_user.orders.find_by id:(params[:id])
+    @order = current_user.orders.find_by id: params[:id]
     @order.destroy
 
     respond_to do |format|
@@ -46,18 +47,19 @@ class OrdersController < ApplicationController
     end
   end
 
-  def is_active
-    @order = current_user.orders.find_by id:(params[:id])
-    if @order.active == true 
+  def actived
+    @order = current_user.orders.find_by id: params[:id]
+    if @order.active == true
       @order.update(active: false)
     else
       @order.update(active: true)
     end
     redirect_to orders_path
   end
+
   private
 
-    def order_params
-      params.require(:order).permit(:title, :check_out, :body, :active)
-    end
+  def order_params
+    params.require(:order).permit(:title, :check_out, :body, :active)
+  end
 end

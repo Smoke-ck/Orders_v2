@@ -1,10 +1,11 @@
-require 'rails_helper'
-require 'spec_helper'
- 
-RSpec.describe "Home page", chrome: true do
+# frozen_string_literal: true
 
-  before { create(:user, email: "BenJohnson@gmail.com", password:"123456") }
-  before { Timecop.freeze(Time.local(2022,1,31,13,0)) }
+require "rails_helper"
+require "spec_helper"
+
+RSpec.describe "Home page", chrome: true do
+  before { create(:user, email: "BenJohnson@gmail.com", password: "123456") }
+  before { Timecop.freeze(Time.local(2022, 1, 31, 13, 0)) }
 
   it "display the the app" do
     visit "/"
@@ -47,7 +48,7 @@ RSpec.describe "Home page", chrome: true do
     fill_in "Where", with: "McDonalds"
     fill_in "Check", with: "13:00"
     fill_in "Body", with: "Some text"
-    check('Active')
+    check("Active")
 
     click_button "Create Order"
     expect(page).to have_content "McDonalds"
@@ -99,7 +100,7 @@ RSpec.describe "Home page", chrome: true do
     fill_in "Where", with: "McDonalds"
     fill_in "Check", with: "13:00"
     fill_in "Body", with: "Some text"
-    check('Active')
+    check("Active")
 
     click_button "Create Order"
     expect(page).to have_content "McDonalds"
@@ -139,7 +140,7 @@ RSpec.describe "Home page", chrome: true do
     fill_in "Where", with: "From..."
     fill_in "Check", with: "13:00"
     fill_in "Body", with: "Some text"
-    check('Active')
+    check("Active")
 
     click_button "Create Order"
     expect(page).to have_content "From..."

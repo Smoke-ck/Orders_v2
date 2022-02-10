@@ -8,6 +8,9 @@ h1.main__title Current orders
         p Check out time: #{order.check_out}
         - if @user.id == order.user_id
           .card-body__controll
-            = link_to 'Show', order, class: "card-body__controll--button btn btn-primary"
-            = button_to "Delete", order_path(order), class: "card-body__controll--button btn btn-primary", method: :delete
-            = button_to "Active", is_active_order_path(order), class: "card-body__controll--button btn btn-primary", method: :put
+            = link_to 'Show', order,
+              class: "card-body__controll--button btn btn-primary"
+            = button_to "Delete", order_path(order),
+              class: "card-body__controll--button btn btn-primary", method: :delete
+            = button_to "Active", actived_order_path(order),
+              class: "card-body__controll--button btn btn-primary", method: :put
