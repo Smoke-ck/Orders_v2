@@ -20,7 +20,7 @@ RSpec.describe "MultiFactor", type: :request do
     it_behaves_like "i18n"
     it "secret was changed" do
       get url
-      expect { user.otp_regenerate_secret }.to change { user.otp_secret_key }
+      expect { user.otp_regenerate_secret }.to change(user, :otp_secret_key)
     end
   end
 

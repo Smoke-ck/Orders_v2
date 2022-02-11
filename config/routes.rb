@@ -15,5 +15,8 @@ Rails.application.routes.draw do
   resources :orders do
     put :actived, on: :member
   end
+  resources :restaurants, shallow: true do
+    resources :menu_items, except: %i[index show]
+  end
   root to: "orders#index", as: "home"
 end

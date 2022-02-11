@@ -1,0 +1,13 @@
+= form_for menu_item, url: path do |f|
+  - if menu_item.errors.any?
+    ul
+      - menu_item.errors.full_messages.each do |msg|
+        li= msg
+  .mb-3
+    = f.label :title, class: "col-sm-2 form-label"
+    .col-sm-10= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true
+    = f.label :price, class: "col-sm-2 form-label"
+    .col-sm-10= f.text_field :price, class: "form-control", placeholder: "Price", autofocus: true
+  div class="d-grib gap-2 d-md-block"
+    = f.submit t("global.button.save"), class: "btn btn-primary mr-2"
+    = link_to t("global.button.back"), 'javascript:history.back()', class: "btn btn-secondary"

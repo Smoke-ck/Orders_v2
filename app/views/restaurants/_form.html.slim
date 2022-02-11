@@ -1,0 +1,11 @@
+= form_for restaurant do |r|
+  - if @restaurant.errors.any?
+    ul
+      - @restaurant.errors.full_messages.each do |msg|
+        li= msg
+  .mb-3
+    = r.label :title, class: "col-sm-2 form-label"
+    .col-sm-10= r.text_field :title, class: "form-control", placeholder: "Title", autofocus: true
+  div class="d-grib gap-2 d-md-block"
+    = r.submit t("global.button.save"), class: "btn btn-primary mr-2"
+    = link_to t("global.button.back"), restaurants_path, class: "btn btn-secondary"

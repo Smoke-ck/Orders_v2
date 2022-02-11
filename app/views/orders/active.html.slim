@@ -3,10 +3,10 @@ h1.main__title =t(".title")
   ul
     li
   .card-body
-    h3.card__title= order.title
-    h2= order.user.email
+    h3= order.user.email
+    h3.card__title= order.restaurant.title
     p Check out time: #{order.check_out}
-    -if @user.id == order.user_id
+    -if current_user.id == order.user_id
       .card-body__controll
         = link_to t("global.button.show"), order, class: "card-body__controll--button btn btn-primary mr-2"
         = button_to t("global.button.delete"), order_path(order),

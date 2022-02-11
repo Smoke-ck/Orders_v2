@@ -2,30 +2,32 @@
 
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+
   def index
-    @user = current_user
-    @orders = current_user.orders.order(created_at: :desc)
+    @orders = current_user.orders.includes(:restaurant).order(created_at: :desc)
   end
 
   def history
-    @orders = current_user.orders.where(active: false)
+    @orders = current_user.orders.includes(:restaurant).where(active: false)
   end
 
   def active
     @user = current_user
-    @orders = Order.where(active: true)
+    @orders = Order.where(active: true).includes(:restaurant)
   end
 
   def show
-    @order = current_user.orders.find_by id: params[:id]
+    @order = current_user.orders.includes(:restaurant).find_by id: params[:id]
   end
 
   def new
     @order = Order.new
+    @restaurants = Restaurant.all
   end
 
   def create
     @order = current_user.orders.build(order_params)
+    @restaurants = Restaurant.all
     respond_to do |format|
       if @order.save
         format.html { redirect_to order_path(@order), notice: "Order was successfully created." }
@@ -60,6 +62,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:title, :check_out, :body, :active)
+    params.require(:order).permit(:check_out, :body, :active, :restaurant_id)
   end
 end

@@ -1,0 +1,13 @@
+h1.main__title =t(".title")
+.restaurnts__wrapper
+  = link_to t(".add_button"), new_restaurant_path, class: 'nav-link'
+  - @restaurants.each do |rest|
+    .card-body
+      h2.card__title= rest.title
+      .card-body__controll
+         = link_to t("global.button.show"), rest,
+         class: "card-body__controll--button btn btn-primary"
+         = link_to t("global.button.edit"), edit_restaurant_path(rest),
+         class: "card-body__controll--button btn btn-primary"
+         = button_to t("global.button.delete"), restaurant_path(rest),
+         class: "card-body__controll--button btn btn-primary", method: :delete, disabled: rest.orders.any?

@@ -1,0 +1,10 @@
+.show
+  h2.show__title= @restaurant.title
+  = link_to t(".add_button"),  new_restaurant_menu_item_path(@restaurant.id), class: 'nav-link'
+  - @restaurant.menu_items.each do |item|
+    p= "#{item.title} #{t(".item_price")}: #{item.price}"
+    .card-body__controll
+        = link_to t("global.button.edit"), edit_menu_item_path(item),
+        class: "card-body__controll--button btn btn-primary"
+        = button_to t("global.button.delete"), menu_item_path(item),
+        class: "card-body__controll--button btn btn-primary", method: :delete

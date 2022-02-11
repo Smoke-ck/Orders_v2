@@ -1,9 +1,9 @@
 h1.main__title =t(".title")
-h2= @user.email 
+h2= current_user.email
 .orders__wrapper
-  - @orders.each do |order| 
+  - @orders.each do |order|
     .card-body 
-      h3.card__title= order.title
+      h3.card__title= order.restaurant.title
       .card-body__controll
          = link_to t("global.button.show"), order, class: "btn btn-primary mr-2"
          = button_to t("global.button.delete"), order_path(order), class: "btn btn-primary mr-2", method: :delete

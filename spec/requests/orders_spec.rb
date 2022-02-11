@@ -5,14 +5,15 @@ require "rails_helper"
 RSpec.describe "Orders", type: :request do
   let(:attributes) do
     {
-      title: "A Order Title",
       check_out: "14:00",
       active: false,
-      body: "MyText"
+      body: "MyText",
+      restaurant_id: restaurant.id
     }
   end
   let(:user) { create(:user, email: "BenJohns@gmail.com", password: "123456") }
-  let(:order) { create(:order, user: user) }
+  let(:restaurant) { create(:restaurant) }
+  let(:order) { create(:order, restaurant: restaurant, user: user) }
 
   before { sign_in user }
 
@@ -78,7 +79,6 @@ RSpec.describe "Orders", type: :request do
     context "with invalid parameters" do
       let(:attributes) do
         {
-          title: "",
           check_out: "",
           body: ""
         }

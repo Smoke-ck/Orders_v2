@@ -6,7 +6,7 @@ h1.main__title =t('.title')
         li= msg 
   .mb-3
     = f.label :title, class: "col-sm-2 form-label"
-    .col-sm-10= f.text_field :title, class: "form-control", placeholder: "Where"
+    .col-sm-10= f.select :restaurant_id, @restaurants.collect{|r| [r.title, r.id]}, {} ,{class: "form-control"}
   .mb-3
     = f.label :check_out, class: "col-sm-2 form-label"
     .col-sm-10= f.text_field :check_out, class: "form-control", placeholder: "Check"

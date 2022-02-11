@@ -9,6 +9,11 @@ ua:
             check_out: Активний до
             body: Текст
             active: Активний
+          restaurant:
+            title: Назва
+          menu_item:
+            title: Назва
+            price: Ціна
         errors:
           models:
             order:
@@ -20,8 +25,10 @@ ua:
       show: Переглянути
       delete: Видалити
       active: Активно
+      edit: Редагувати
       done: Виконано
       back: Назад
+      save: Зберегти
     status:
       active: "Статус: Активно"
       dode: "Статус: Виконано"
@@ -30,6 +37,7 @@ ua:
     new: Створити новий ордер
     current: Активний ордер
     history: Історія виконаних
+    restaurant: Ресторани
   orders:
     index:
       title: Всі ордери
@@ -40,3 +48,20 @@ ua:
       title: Активний ордер
     history:
       title: Історія виконаних
+  restaurants:
+    index:
+      title: Список ресторанів
+      add_button: Новий ресторан
+    new:
+      title: Новий ресторан
+      add_button: Додати ресторан
+    edit:
+      title: Редагувати
+    show:
+      add_button: Додати елемент меню
+      item_price: Ціна
+  menu_items:
+    new:
+      title: Новий елемент меню
+    edit:
+      title: Редагувати елемент
