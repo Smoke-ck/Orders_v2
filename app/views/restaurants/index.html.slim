@@ -1,16 +1,17 @@
 h1.main__title =t(".title")
+= turbo_frame_tag Restaurant.new do
+    = link_to t(".add_button"), new_restaurant_path, class: "restaurants__new-link"
 .restaurants
-  = turbo_frame_tag Restaurant.new do
-    = link_to t(".add_button"), new_restaurant_path, class: "link-secondary"
   - @restaurants.each do |rest|
-    .card-body.restaurants__card.restaurant
-      = turbo_frame_tag rest do
-        h2.card__title= rest.title
-        = link_to t("global.button.edit"), edit_restaurant_path(rest),
-        class: "text-decoration-none link-dark"
-      .card-body__controll.mt-3
+    .restaurant-card
+      .restaurant-card__content
+        = turbo_frame_tag rest do
+          h2.restaurant-card__title= rest.title
+          = link_to t("global.button.edit"), edit_restaurant_path(rest),
+          class: "text-decoration-none restaurant-card__link"
+      .card-body__controll.restaurant-card__controll
         = link_to t("global.button.show"), rest,
-        class: "text-decoration-none link-info me-2"
+        class: "text-decoration-none me-2 restaurant-card__link--info"
         ||
         = button_to t("global.button.delete"), restaurant_path(rest),
-        class: "border-0 bg-transparent", method: :delete, disabled: rest.orders.any?, data: { "turbo-frame" => "_top" }
+        class: "border-0 bg-transparent restaurant-card__link", method: :delete, disabled: rest.orders.any?, data: { "turbo-frame" => "_top" }

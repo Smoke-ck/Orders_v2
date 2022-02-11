@@ -69,7 +69,8 @@ RSpec.describe "Home page", chrome: true do
     expect(page).to have_content "Item was successfully created."
     expect(page).to have_content "McDonaldsNew"
     expect(page).to have_link "Add item"
-    expect(page).to have_content "Burger Price: 55.55"
+    expect(page).to have_content "Burger"
+    expect(page).to have_content "Price: 55.55"
 
     expect(page).to have_link "Edit"
     expect(page).to have_button "Delete"
@@ -85,7 +86,7 @@ RSpec.describe "Home page", chrome: true do
     expect(page).to have_content "Item was successfully edited."
     expect(page).to have_content "McDonaldsNew"
     expect(page).to have_link "Add item"
-    expect(page).to have_content "New Burger Price: 55.55"
+    expect(page).to have_content "New Burger"
     click_button "Delete"
 
     expect(page).to have_content "Item was successfully destroyed."
@@ -105,8 +106,10 @@ RSpec.describe "Home page", chrome: true do
     expect(page).to have_content "Item was successfully created."
     expect(page).to have_content "McDonaldsNew"
     expect(page).to have_link "Add item"
-    expect(page).to have_content "Burger Price: 55.55"
-    expect(page).to have_content "Some Burger Price: 75.56"
+    expect(page).to have_content "Burger"
+    expect(page).to have_content "Price: 55.55"
+    expect(page).to have_content "Some Burger"
+    expect(page).to have_content "Price: 75.56"
     click_link "Restaurants"
     click_button "Delete"
 

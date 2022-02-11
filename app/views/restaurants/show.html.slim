@@ -1,15 +1,18 @@
-.restaurants__show
-  h2.show__title= @restaurant.title
+h2.main__title= @restaurant.title
+.restaurant
   = turbo_frame_tag MenuItem.new do
-    = link_to t(".add_button"), new_restaurant_menu_item_path(@restaurant.id), class: "link-secondary"
+    = link_to t(".add_button"), new_restaurant_menu_item_path(@restaurant.id), class: "restaurants__new-link"
   .menu-items
     - @restaurant.menu_items.each do |item|
       .card-body.menu-item
         = turbo_frame_tag item do
-          p= "#{item.title} #{t(".item_price")}: #{item.price}"
-          .card-body__controll
-            = link_to t("global.button.edit"), edit_menu_item_path(item),
-            class: "text-decoration-none link-info me-2"
-            ||
-            = button_to t("global.button.delete"), menu_item_path(item),
-            class: "border-0 bg-transparent", method: :delete, data: { "turbo-frame" => "_top" }
+          .menu-item__content
+            .
+              h2.menu-item__title= "#{item.title}"
+              h2.menu-item__title.menu-item__title--price= "#{t(".item_price")}: #{item.price}"
+            .menu-item__controll
+              = link_to t("global.button.edit"), edit_menu_item_path(item),
+              class: "text-decoration-none me-2 menu-item__link"
+              ||
+              = button_to t("global.button.delete"), menu_item_path(item),
+              class: "border-0 bg-transparent menu-item__link", method: :delete, data: { "turbo-frame" => "_top" }
