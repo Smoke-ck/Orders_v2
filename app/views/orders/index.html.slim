@@ -1,9 +1,10 @@
+- provide :page_title, "Orders"
 h1.main__title All orders 
 h2= @user.email 
 .orders__wrapper
   - @orders.each do |order| 
     .card-body 
-      h3.card__title= order.title
+      / h3.card__title= order.title
       .card-body__controll
          = link_to 'Show', order,
          class: "card-body__controll--button btn btn-primary"

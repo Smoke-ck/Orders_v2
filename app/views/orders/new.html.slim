@@ -1,12 +1,13 @@
+- provide :page_title, "New order"
 h1.new__title New Order
 = form_for @order do |f|
   - if @order.errors.any?
     ul
       - @order.errors.full_messages.each do |msg|
         li= msg 
-  .mb-3
-    = f.label :Where, class: "col-sm-2 form-label"
-    .col-sm-10= f.text_field :title, class: "form-control", placeholder: "Where"
+  / .mb-3
+  /   = f.label :Where, class: "col-sm-2 form-label"
+  /   .col-sm-10= f.text_field :title, class: "form-control", placeholder: "Where"
   .mb-3
     = f.label :Check, class: "col-sm-2 form-label"
     .col-sm-10= f.text_field :check_out, class: "form-control", placeholder: "Check"
