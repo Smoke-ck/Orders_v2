@@ -17,27 +17,39 @@ RSpec.describe "Orders", type: :request do
   before { sign_in user }
 
   describe "#index" do
+    let(:url) { orders_path }
+
+    it_behaves_like "i18n"
     it "returns http success /index" do
-      get orders_url
+      get url
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "#show" do
+    let(:url) { order_path(order) }
+
+    it_behaves_like "i18n"
     it "renders a successful response" do
-      get orders_url(order)
+      get url
       expect(response).to be_successful
     end
   end
 
   describe "#new" do
+    let(:url) { new_order_path }
+
+    it_behaves_like "i18n"
     it "renders a successful response" do
-      get new_order_url
+      get url
       expect(response).to be_successful
     end
   end
 
   describe "#active" do
+    let(:url) { orders_active_path }
+
+    it_behaves_like "i18n"
     it "renders a successful response" do
       get orders_active_url
       expect(response).to be_successful
@@ -45,6 +57,9 @@ RSpec.describe "Orders", type: :request do
   end
 
   describe "#history" do
+    let(:url) { orders_history_path }
+
+    it_behaves_like "i18n"
     it "renders a successful response" do
       get orders_history_url
       expect(response).to be_successful

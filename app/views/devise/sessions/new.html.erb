@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h4>Sign up</h4>
+    <h4><%=t("devise.sign-in.title")%></h4>
   </div>
   <div class="card-body">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -22,7 +22,7 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in",class:"btn btn-secondary" %>
+    <%= f.submit t('devise.sign-in.button'),class:"btn btn-secondary" %>
   </div>
 <% end %>
 <br>

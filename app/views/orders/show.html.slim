@@ -2,4 +2,4 @@
   h2.show__title= @order.title
   p= @order.body
   p Check out time: #{@order.check_out}
-  p= @order.active == true ? ' Status: Active' : 'Status: Done'
+  p= @order.active == true ? t("global.status.active") : t("global.status.done")

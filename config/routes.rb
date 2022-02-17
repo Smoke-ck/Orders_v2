@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     put :actived, on: :member
   end
   root to: "orders#index", as: "home"
-
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
