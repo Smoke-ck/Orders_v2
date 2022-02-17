@@ -1,6 +1,6 @@
-uk:
+ua:
   en: Англійска
-  uk: Українська
+  ua: Українська
   ru: Російська
   activerecord:
         attributes:
