@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Internationalization
   extend ActiveSupport::Concern
 
@@ -6,7 +8,7 @@ module Internationalization
 
     private
 
-    def switch_locale()
+    def switch_locale
       I18n.locale = params[:locale] || session[:locale] || locale_from_header || I18n.default_locale
       session[:locale] = I18n.locale
     end
