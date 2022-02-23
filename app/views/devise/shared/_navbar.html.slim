@@ -15,12 +15,14 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-between
       ul.navbar-nav.ml-auto
         - I18n.available_locales.each do |locale|
           li.nav-link
-            = link_to image_tag("#{locale}.png",height: '18', width: '28', alt: locale), locale: locale
+            = link_to image_tag("#{locale}.png",height: "18", width: "28", alt: locale), locale: locale
       - if user_signed_in?
         li.nav-item
-          = link_to t("devise.shared.links.sign_out"), destroy_user_session_path, method: :delete, class: 'nav-link'
+          = link_to t("devise.shared.links.sign_out"), destroy_user_session_path, method: :delete, class: "nav-link"
+          li.nav-item
+          = link_to t("devise.shared.links.edit"), edit_user_registration_path,class: "nav-link"
       - else
         li.nav-item
-          = link_to t("devise.shared.links.sign_in"), new_user_session_path, class: 'nav-link'
+          = link_to t("devise.shared.links.sign_in"), new_user_session_path, class: "nav-link"
         li.nav-item
-          = link_to t("devise.shared.links.sign_up"), new_user_registration_path, class: 'nav-link'
+          = link_to t("devise.shared.links.sign_up"), new_user_registration_path, class: "nav-link"

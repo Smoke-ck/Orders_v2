@@ -126,6 +126,7 @@ ua:
         forgot_your_password: Забули пароль?
         sign_in: Увійти
         sign_out: Вийти
+        edit: Редагувати профиль
         sign_in_with_provider: Увійти за допомогою %{provider}
         sign_up: Зареєструватися
       minimum_password_length:
