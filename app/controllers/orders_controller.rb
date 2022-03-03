@@ -24,7 +24,6 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @restaurants = Restaurant.all
   end
 
   def create
