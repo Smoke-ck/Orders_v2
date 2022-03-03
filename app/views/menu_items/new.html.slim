@@ -1,2 +1,4 @@
-h1.main__title =t(".title")
-= render "form", menu_item: @menu_item, path: restaurant_menu_items_path(@restaurant)
+= turbo_frame_tag @menu_item do
+  .card-body.menu-items__new
+    h3.card__title  =t(".title")
+    = render "form", menu_item: @menu_item, path: restaurant_menu_items_path(@restaurant)

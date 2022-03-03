@@ -2,6 +2,7 @@
 
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!
+  before_action :load_restaurant, only: %i[edit update destroy]
 
   def index
     @restaurants = Restaurant.all.includes(:orders)
@@ -15,12 +16,9 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new
   end
 
-  def edit
-    @restaurant = Restaurant.find params[:id]
-  end
+  def edit; end
 
   def update
-    @restaurant = Restaurant.find params[:id]
     respond_to do |format|
       if @restaurant.update(restaurant_params)
         format.html { redirect_to restaurants_path, alert: "Restaurant was successfully edited." }
@@ -46,7 +44,6 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
-    @restaurant = Restaurant.find params[:id]
     @restaurant.destroy
 
     respond_to do |format|
@@ -59,5 +56,9 @@ class RestaurantsController < ApplicationController
 
   def restaurant_params
     params.require(:restaurant).permit(:title)
+  end
+
+  def load_restaurant
+    @restaurant = Restaurant.find params[:id]
   end
 end

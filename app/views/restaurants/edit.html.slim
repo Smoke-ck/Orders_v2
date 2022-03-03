@@ -1,2 +1,2 @@
-h1.main__title =t(".title")
-= render "form", restaurant: @restaurant
+= turbo_frame_tag @restaurant do
+  = render "form", restaurant: @restaurant

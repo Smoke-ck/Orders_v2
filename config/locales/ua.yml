@@ -19,7 +19,7 @@ ua:
             order:
               attributes:
                 check_out:
-                  blank: "- час, до якого ордер будет активований"
+                  blank: "- час, до якого ордер буде активований"
   global:
     button:
       show: Переглянути

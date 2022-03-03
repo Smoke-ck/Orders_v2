@@ -2,14 +2,14 @@
 
 class MenuItemsController < ApplicationController
   before_action :authenticate_user!
+  before_action :load_restaurant, only: %i[new create]
+  before_action :load_menu_item, only: %i[edit update destroy]
 
   def new
-    @restaurant = Restaurant.find params[:restaurant_id]
     @menu_item = @restaurant.menu_items.build
   end
 
   def create
-    @restaurant = Restaurant.find params[:restaurant_id]
     @menu_item = @restaurant.menu_items.build(menu_item_params)
     respond_to do |format|
       if @menu_item.save
@@ -22,12 +22,9 @@ class MenuItemsController < ApplicationController
     end
   end
 
-  def edit
-    @menu_item = MenuItem.find params[:id]
-  end
+  def edit; end
 
   def update
-    @menu_item = MenuItem.find params[:id]
     respond_to do |format|
       if @menu_item.update(menu_item_params)
         format.html { redirect_to restaurant_path(@menu_item.restaurant_id), alert: "Item was successfully edited." }
@@ -40,7 +37,6 @@ class MenuItemsController < ApplicationController
   end
 
   def destroy
-    @menu_item = MenuItem.find params[:id]
     @menu_item.destroy
     respond_to do |format|
       format.html { redirect_to restaurant_path(@menu_item.restaurant_id), notice: "Item was successfully destroyed." }
@@ -52,5 +48,13 @@ class MenuItemsController < ApplicationController
 
   def menu_item_params
     params.require(:menu_item).permit(:title, :price, :restaurant_id)
+  end
+
+  def load_restaurant
+    @restaurant = Restaurant.find params[:restaurant_id]
+  end
+
+  def load_menu_item
+    @menu_item = MenuItem.find params[:id]
   end
 end

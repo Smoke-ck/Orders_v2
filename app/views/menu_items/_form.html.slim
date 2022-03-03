@@ -1,13 +1,10 @@
-= form_for menu_item, url: path do |f|
-  - if menu_item.errors.any?
-    ul
-      - menu_item.errors.full_messages.each do |msg|
-        li= msg
+= form_for menu_item, url: path, data: { "turbo-frame" => "_top" } do |f|
+  = form_error(@menu_item)
   .mb-3
     = f.label :title, class: "col-sm-2 form-label"
     .col-sm-10= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true
     = f.label :price, class: "col-sm-2 form-label"
     .col-sm-10= f.text_field :price, class: "form-control", placeholder: "Price", autofocus: true
-  div class="d-grib gap-2 d-md-block"
-    = f.submit t("global.button.save"), class: "btn btn-primary mr-2"
-    = link_to t("global.button.back"), 'javascript:history.back()', class: "btn btn-secondary"
+  .d-grib.gap-2.d-md-block
+    = f.submit t("global.button.save"), class: "link-success bg-transparent border-0 me-2"
+    = link_to t("global.button.back"), :back, class: "text-decoration-none link-dark", data: { "turbo-frame" => "_top" }

@@ -1,2 +1,4 @@
-h1.main__title =t(".title")
-= render "form", restaurant: @restaurant
+= turbo_frame_tag dom_id(@restaurant) do
+  .card-body.restaurants__new
+    h2.card__title =t(".title")
+    = render "form", restaurant: @restaurant

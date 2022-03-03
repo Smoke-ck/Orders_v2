@@ -34,7 +34,6 @@ RSpec.describe "Home page", chrome: true do
     expect(page).to have_button "Delete"
 
     click_link "Edit"
-    expect(page).to have_content "Edit Restaurant"
     expect(page).to have_field "Title"
     expect(page).to have_button "Save"
     fill_in "Title", with: "McDonaldsNew"
@@ -48,7 +47,7 @@ RSpec.describe "Home page", chrome: true do
 
     click_link "Show"
 
-    expect(page).to have_content "McDonalds"
+    expect(page).to have_content "McDonaldsNew"
     expect(page).to have_link "Add item"
     click_link "Add item"
 
@@ -68,7 +67,7 @@ RSpec.describe "Home page", chrome: true do
 
     click_button "Save"
     expect(page).to have_content "Item was successfully created."
-    expect(page).to have_content "McDonalds"
+    expect(page).to have_content "McDonaldsNew"
     expect(page).to have_link "Add item"
     expect(page).to have_content "Burger Price: 55.55"
 
@@ -84,13 +83,13 @@ RSpec.describe "Home page", chrome: true do
     click_button "Save"
 
     expect(page).to have_content "Item was successfully edited."
-    expect(page).to have_content "McDonalds"
+    expect(page).to have_content "McDonaldsNew"
     expect(page).to have_link "Add item"
     expect(page).to have_content "New Burger Price: 55.55"
     click_button "Delete"
 
     expect(page).to have_content "Item was successfully destroyed."
-    expect(page).to have_content "McDonalds"
+    expect(page).to have_content "McDonaldsNew"
     expect(page).to have_link "Add item"
     click_link "Add item"
 
@@ -104,7 +103,7 @@ RSpec.describe "Home page", chrome: true do
     click_button "Save"
 
     expect(page).to have_content "Item was successfully created."
-    expect(page).to have_content "McDonalds"
+    expect(page).to have_content "McDonaldsNew"
     expect(page).to have_link "Add item"
     expect(page).to have_content "Burger Price: 55.55"
     expect(page).to have_content "Some Burger Price: 75.56"
