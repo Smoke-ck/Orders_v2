@@ -6,7 +6,6 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all.includes(:orders)
-    new
   end
 
   def show

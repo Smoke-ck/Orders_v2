@@ -1,15 +1,17 @@
+
+  
 .navbar {
   border-bottom: 2px solid #8d380e;
   font-size: 18px;
   margin-bottom: 10px;
-}
 
-.navbar-light .navbar-nav .nav-link {
-  color: $primary-100;
-  font: $links-fonts;
-  text-decoration: none;
+  &__link {
+    color: $primary-100 !important;
+    font: $links-fonts;
+    text-decoration: none;
 
-  &:hover {
-    color: $nav-hover;
+    &:hover {
+      color: $nav-hover !important;
+    }
   }
 }

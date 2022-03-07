@@ -2,15 +2,15 @@
   - if user_signed_in?
       ul.navbar-nav.ml-auto
         li
-          = link_to t("menu.home"), home_path, class: "nav-link"
+          = link_to t("menu.home"), home_path, class: "nav-link navbar__link"
         li
-          = link_to t("menu.new"), new_order_path, class: "nav-link"
+          = link_to t("menu.new"), new_order_path, class: "nav-link navbar__link"
         li
-          = link_to t("menu.current"), orders_active_path, class: "nav-link"
+          = link_to t("menu.current"), orders_active_path, class: "nav-link navbar__link"
         li
-          = link_to t("menu.history"), orders_history_path, class: "nav-link"
+          = link_to t("menu.history"), orders_history_path, class: "nav-link navbar__link"
         li
-          = link_to t("menu.restaurant"), restaurants_path, class: "nav-link"
+          = link_to t("menu.restaurant"), restaurants_path, class: "nav-link navbar__link"
   #navbarSupportedContent.collapse.d-flex.me-2
     ul.navbar-nav.ml-auto
       ul.navbar-nav.ml-auto
@@ -19,11 +19,11 @@
             = link_to image_tag("#{locale}.png",height: "18", width: "28", alt: locale), locale: locale
       - if user_signed_in?
         li.nav-item
-          = link_to t("devise.shared.links.sign_out"), destroy_user_session_path, method: :delete, class: "nav-link"
+          = link_to t("devise.shared.links.sign_out"), destroy_user_session_path, method: :delete, class: "nav-link navbar__link"
           li.nav-item
-          = link_to t("devise.shared.links.edit"), edit_user_registration_path,class: "nav-link"
+          = link_to t("devise.shared.links.edit"), edit_user_registration_path,class: "nav-link navbar__link"
       - else
         li.nav-item
-          = link_to t("devise.shared.links.sign_in"), new_user_session_path, class: "nav-link"
+          = link_to t("devise.shared.links.sign_in"), new_user_session_path, class: "nav-link navbar__link"
         li.nav-item
-          = link_to t("devise.shared.links.sign_up"), new_user_registration_path, class: "nav-link"
+          = link_to t("devise.shared.links.sign_up"), new_user_registration_path, class: "nav-link navbar__link"
