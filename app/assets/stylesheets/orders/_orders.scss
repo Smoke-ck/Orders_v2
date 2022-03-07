@@ -1,0 +1,80 @@
+.orders {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  margin-top: 20px;
+
+  &:hover > .order-card:not(:hover) .order-card__background {
+    filter: brightness(.4) saturate(1) contrast(.9) blur(20px);
+    transition: 1s;
+  }
+}
+
+.order-card {
+  opacity: .9;
+  position: relative;
+
+  &__background {
+    background-color: $card-color;
+    border-radius: 5px;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &__content {
+    left: 0;
+    position: relative;
+    top: 0;
+  }
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.05) translateZ(0);
+    transition: .5s;
+  }
+
+  &:hover &__title {
+    color: $hover-color;
+    transition: 1s;
+  }
+
+  &__title {
+    color: $primary-100;
+    font: $h2-fonts;
+    text-align: center;
+  }
+
+  &__controll {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__show {
+    color: $link-color;
+    font: $links-fonts;
+    position: relative;
+    text-decoration: none;
+
+    &:hover {
+      color: $hover-color;
+    }
+  }
+
+  &__button {
+    color: $link-color;
+    font: $links-fonts;
+
+    &:hover {
+      color: $hover-color;
+    }
+  }
+}
+
+@import 'new-order';
+@import 'active-orders';
+@import 'history';
+@import 'switch'

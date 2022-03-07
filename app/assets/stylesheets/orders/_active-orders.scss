@@ -1,0 +1,124 @@
+.active-orders {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+  &:hover > .active-order-card:not(:hover) .active-order-card__background {
+    filter: brightness(.4) saturate(1) contrast(.9) blur(20px);
+    transition: 1s;
+  }
+}
+
+.active-order-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 10px;
+  position: relative;
+
+  &__background {
+    background-color: $card-color;
+    border-radius: 5px;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &__user-photo {
+    height: 120px;
+    position: relative;
+    width: 120px;
+
+    &--img {
+      background: linear-gradient(157deg, rgba(10, 16, 64, 1) 0%, rgba(126, 213, 226, 1) 100%);
+      border-radius: 50%;
+      height: 120px;
+      width: 120px;
+    }
+  }
+
+  &__user-email {
+    color: $primary-200;
+    font: $p-fonts;
+  }
+
+  &__restaurant {
+    color: $primary-100;
+    font: $h2-fonts;
+  }
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.05) translateZ(0);
+    transition: .5s;
+    }
+
+  &:hover .active-order-card____controll {
+    opacity: 1;
+    }
+
+  &:hover .active-order-card__description {
+    opacity: 1;
+    transition: 2s;
+  }
+
+  &:hover .active-order-card__user-photo {
+    align-self: flex-start;
+    animation: photo;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    border-left: 3px solid $hover-color;
+    border-top: 3px solid $hover-color;
+    border-top-left-radius: 10px;
+    padding: 15px;
+    position: relative;
+    transform: scale(1.0);
+  }
+
+  &:hover .active-order-card__restaurant {
+    color: $hover-color;
+    transition: 1s;
+  }
+
+  &:hover .active-order-card__text {
+    margin-top: 0;
+  }
+
+  &__text {
+    margin: 27px 0;
+    position: relative;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  &__description {
+    color: $primary-100;
+    font: $span2-fonts;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    width: 170px;
+  }
+
+  &__controll {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    width: 100%;
+  }
+}
+
+@keyframes photo {
+
+  0% {
+    transform: scale(1) translateY(15px) translateX(60px);
+  }
+
+  100% {
+    transform: scale(.6) translateY(-90px) translateX(-57px);
+  }
+}

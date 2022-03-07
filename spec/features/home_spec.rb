@@ -10,6 +10,7 @@ RSpec.describe "Home page", chrome: true do
   it "display the the app" do
     visit "/"
     find(:xpath, "//a/img[@alt='en']/..").click
+
     expect(page).to have_link "Log in"
     expect(page).to have_link "Sign up"
     expect(page).to have_content "Sign up"
@@ -36,7 +37,7 @@ RSpec.describe "Home page", chrome: true do
     click_link "Create new order"
     expect(page).to have_content "New order"
     expect(page).to have_content "Where"
-    expect(page).to have_content "Chek out time"
+    expect(page).to have_content "Check out time"
     expect(page).to have_field "Check"
     expect(page).to have_content "Body"
     expect(page).to have_field "Body"
@@ -46,7 +47,7 @@ RSpec.describe "Home page", chrome: true do
     click_button "Create Order"
     expect(page).to have_content "Body can't be blank"
     expect(page).to have_content "Body is too short (minimum is 5 characters)"
-    expect(page).to have_content "Chek out time required and must be time"
+    expect(page).to have_content "Check out time required and must be time"
 
     find("#order_restaurant_id option[value='1']").select_option
     fill_in "Check", with: "13:00"
@@ -67,16 +68,18 @@ RSpec.describe "Home page", chrome: true do
     expect(page).to have_content "McDonalds"
     expect(page).to have_link "Show"
     expect(page).to have_button "Delete"
-    expect(page).to have_button "Active"
+    expect(page).to have_button "submit", visible: false
 
     click_link "Active order"
+    find('.active-order-card').click
+
     expect(page).to have_content "Active orders"
     expect(page).to have_content "McDonalds"
     expect(page).to have_content "benjohnson@gmail.com"
     expect(page).to have_content "Check out time: 2022-01-31 13:00:00 UTC"
     expect(page).to have_link "Show"
     expect(page).to have_button "Delete"
-    expect(page).to have_button "Active"
+    expect(page).to have_button "submit", visible: false
 
     click_link "Home"
     expect(page).to have_content "All orders"
@@ -84,9 +87,9 @@ RSpec.describe "Home page", chrome: true do
     expect(page).to have_content "McDonalds"
     expect(page).to have_link "Show"
     expect(page).to have_button "Delete"
-    expect(page).to have_button "Active"
+    expect(page).to have_button "submit", visible: false
 
-    click_button "Active"
+    find(".switch__checkbox-submit", visible: false).click
     click_link "History"
     expect(page).to have_content "McDonalds"
 
@@ -96,7 +99,7 @@ RSpec.describe "Home page", chrome: true do
     expect(page).to have_content "McDonalds"
     expect(page).to have_link "Show"
     expect(page).to have_button "Delete"
-    expect(page).to have_button "Done"
+    expect(page).to have_button "submit", visible: false
 
     click_button "Delete"
     expect(page).to have_content "Order was successfully destroyed."
@@ -115,6 +118,7 @@ RSpec.describe "Home page", chrome: true do
 
     click_link "Log out"
     find(:xpath, "//a/img[@alt='en']/..").click
+
     expect(page).to have_link "Log in"
     expect(page).to have_link "Sign up"
     expect(page).to have_content "Sign in"
@@ -137,6 +141,8 @@ RSpec.describe "Home page", chrome: true do
     expect(page).to have_content "jonjohnson@gmail.com"
 
     click_link "Active order"
+    find('.active-order-card').click
+
     expect(page).to have_content "Home"
     expect(page).to have_content "McDonalds"
     expect(page).to have_content "benjohnson@gmail.com"
@@ -162,16 +168,18 @@ RSpec.describe "Home page", chrome: true do
     click_link "Active order"
     expect(page).to have_content "Active orders"
 
+    find("h2", text: "McDonalds").click
     expect(page).to have_content "McDonalds"
     expect(page).to have_content "benjohnson@gmail.com"
     expect(page).to have_content "Check out time: 2022-01-31 13:00:00 UTC"
 
+    find("h2", text: "KFC").click
     expect(page).to have_content "KFC"
     expect(page).to have_content "jonjohnson@gmail.com"
     expect(page).to have_content "Check out time: 2022-01-31 13:00:00 UTC"
     expect(page).to have_link "Show"
     expect(page).to have_button "Delete"
-    expect(page).to have_button "Active"
+    expect(page).to have_button "submit", visible: false
 
     click_link "Restaurants"
     expect(page).to have_button "Delete",disabled: true

@@ -37,6 +37,7 @@ RSpec.describe "Home page", chrome: true do
     click_link "Log out"
 
     find(:xpath, "//a/img[@alt='en']/..").click
+
     expect(page).to have_content "Email"
     expect(page).to have_content "Password"
     fill_in "Email", with: "BenJohnson@gmail.com"
@@ -76,6 +77,7 @@ RSpec.describe "Home page", chrome: true do
     click_link "Log out"
 
     find(:xpath, "//a/img[@alt='en']/..").click
+
     fill_in "Email", with: "BenJohnson@gmail.com"
     fill_in "Password", with: "123456"
     click_button "Sign in"

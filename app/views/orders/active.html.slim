@@ -1,15 +1,17 @@
 h1.main__title =t(".title")
-- @orders.each do |order|
-  ul
-    li
-  .card-body
-    h3= order.user.email
-    h3.card__title= order.restaurant.title
-    p Check out time: #{order.check_out}
-    -if current_user.id == order.user_id
-      .card-body__controll
-        = link_to t("global.button.show"), order, class: "card-body__controll--button btn btn-primary mr-2"
-        = button_to t("global.button.delete"), order_path(order),
-        class: "card-body__controll--button btn btn-primary mr-2", method: :delete
-        = button_to t("global.button.active"), actived_order_path(order),
-        class: "card-body__controll--button btn btn-primary", method: :put
+.active-orders
+  - @orders.each do |order|
+    .active-order-card
+      .active-order-card__background
+      .active-order-card__user-photo
+        .active-order-card__user-photo--img
+      .active-order-card__text
+        p.active-order-card__user-email= order.user.email
+        h2.active-order-card__restaurant= order.restaurant.title
+      p.active-order-card__description Check out time: #{order.check_out}
+      -if current_user.id == order.user_id
+        .card-body__controll.active-order-card__controll
+          = link_to t("global.button.show"), order, class: "order-card__show"
+          = button_to t("global.button.delete"), order_path(order),
+          class: "border-0 bg-transparent order-card__button", method: :delete
+          = render "switch", order: order

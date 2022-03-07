@@ -1,11 +1,14 @@
 h1.main__title =t(".title")
-h2= current_user.email
-.orders__wrapper
-  - @orders.each do |order|
-    .card-body 
-      h3.card__title= order.restaurant.title
-      .card-body__controll
-         = link_to t("global.button.show"), order, class: "btn btn-primary me-2"
-         = button_to t("global.button.delete"), order_path(order), class: "btn btn-primary me-2", method: :delete
-         = button_to order.active == true ? t("global.button.active"): t("global.button.done"),actived_order_path(order),
-          class: "btn btn-primary", method: :put
+.main
+  h2.main__user-name= current_user.email
+  .orders
+    - @orders.each do |order|
+      .card-body.order-card
+        .order-card__background
+        .order-card__content
+          h2.card__title.order-card__title= order.restaurant.title
+          .card-body__controll.order-card__controll
+            = link_to t("global.button.show"), order, class: "order-card__show"
+            = button_to t("global.button.delete"), order_path(order),
+            class: "border-0 bg-transparent order-card__button", method: :delete
+            = render "switch", order: order

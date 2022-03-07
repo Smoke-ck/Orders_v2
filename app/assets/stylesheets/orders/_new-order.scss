@@ -1,0 +1,23 @@
+.new_order {
+  &__label {
+    color: $primary-300;
+    font: $span1-fonts;
+  }
+
+  &__input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #5c5c5c;
+    display: block;
+    outline: none;
+    width: 100%;
+
+    &--select {
+      padding: 10px 20px 10px 0;
+    }
+
+    &:hover {
+      border-bottom: 2px solid #fff;
+    }
+  }
+}

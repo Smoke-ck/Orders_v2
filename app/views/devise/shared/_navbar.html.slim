@@ -1,6 +1,5 @@
-nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-between
+.navbar.navbar-expand-lg.navbar-light.justify-content-between
   - if user_signed_in?
-    div
       ul.navbar-nav.ml-auto
         li
           = link_to t("menu.home"), home_path, class: "nav-link"

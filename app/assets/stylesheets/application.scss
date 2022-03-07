@@ -1,28 +1,64 @@
-body {
-  font-family: apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
+.container {
+  background: linear-gradient(180deg, rgba(10, 41, 64, 1) 0%, rgba(1, 141, 209, 1) 30%);
+  border-radius: 5px;
+  margin: 20px auto;
+  max-width: 1300px;
+  min-width: 320px;
+  padding: 30px 20px;
 }
+
 .qr {
-  border-width: 0;
-  border-style: none;
-  border-color: #0000ff;
   border-collapse: collapse;
+  border-color: #00f;
+  border-style: none;
+  border-width: 0;
 }
+
 .qr td {
-  border-width: 0;
-  border-style: none;
-  border-color: #0000ff;
   border-collapse: collapse;
-  padding: 0;
-  margin: 0;
-  width: 10px;
+  border-color: #00f;
+  border-style: none;
+  border-width: 0;
   height: 10px;
+  margin: 0;
+  padding: 0;
+  width: 10px;
 }
-.qr td.black { background-color: black; }
+
+.qr td.black { background-color: #000; }
 .qr td.white { background-color: #fff; }
 .token { display: none; }
 
-$card-border: 2px solid white;
+$background: #e5e5e5;
+$primary-100: #fff;
+$primary-200: #dfd3d3;
+$primary-300: #bdbdbd;
+$primary-400: #7dd2de;
+$nav-hover: #c63b00;
+$hover-color: #c63b00;
+$link-color: #c7b299;
+$link-info-color: #14caf2;
+$card-color: #194567;
+$submit-color: #53da06;
+
+$card-border: 2px solid #fff;
 $new-card-border: 2px solid #a8a8a8;
-@import "main";
-@import "restaurants";
-@import "menu-items";
+
+$h1-fonts: 700 40px 'Arial';
+$h2-fonts: 600 25px 'Arial';
+$h3-fonts: 600 20px 'Arial';
+$links-fonts: 500 15px 'Arial';
+$p-fonts: 400 15px 'Arial';
+$span1-fonts: 500 20px 'Arial';
+$span2-fonts: 300 14px 'Arial';
+
+.alert {
+  color: #ffa500;
+  font: $span1-fonts;
+}
+
+@import 'navbar';
+@import 'main';
+@import './orders/orders';
+@import './restaurants/restaurants';
+@import './menu-items/menu-items';

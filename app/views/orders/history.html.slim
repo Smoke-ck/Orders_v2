@@ -1,5 +1,6 @@
 h2.main__title =t(".title")
-- @orders.each do |order| 
-  ul
-    li
-      h3.card__title= order.restaurant.title
+.history
+  - @orders.each do |order|
+    ul.history__orders-list
+      li
+        h3.history__order-title= order.restaurant.title

@@ -1,0 +1,10 @@
+.restaurants-new {
+  border: $new-card-border;
+  border-radius: 5px;
+  margin-top: 15px;
+
+  &__title {
+    color: $primary-200;
+    font: $h2-fonts;
+  }
+}
