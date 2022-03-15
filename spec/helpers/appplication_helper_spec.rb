@@ -25,4 +25,8 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.form_error(menu_item)).to include("Title is too short (minimum is 2 characters)")
     end
   end
+
+  describe "flash" do
+    it { expect(helper.prepend_flash).to eq("<turbo-stream action=\"replace\" target=\"flash\"><template></template></turbo-stream>") }
+  end
 end

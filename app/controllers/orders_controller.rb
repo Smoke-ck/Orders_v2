@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
+  include OrdersOrderItems
   before_action :authenticate_user!
   before_action :load_all_restaurant, only: %i[new create]
-  before_action :load_order, only: %i[actived destroy show]
+  before_action :load_order, only: %i[actived destroy show paid_users]
   before_action :load_order_restaurant, only: %i[show owner_show]
   before_action :redirect_to_show, only: :owner_show
 
@@ -27,6 +28,10 @@ class OrdersController < ApplicationController
 
   def owner_show
     @order_items = @order.order_items.group_by(&:user_id)
+    @price = OrderItemsPriceService.call(@order_items)
+
+    all_order_items = @order.order_items.group(:menu_item_id).sum(:count)
+    @items = AllOrderItemsPriceService.call(all_order_items, @order.restaurant.menu_items)
   end
 
   def new
@@ -61,6 +66,16 @@ class OrdersController < ApplicationController
       @order.update(active: true)
     end
     redirect_to orders_path
+  end
+
+  def paid_users
+    if @order.paid_users_id.include?(params[:format])
+      @order.paid_users_id.delete(params[:format])
+    else
+      @order.paid_users_id << params[:format]
+    end
+    @order.save
+    redirect_to owner_show_order_path(@order.id)
   end
 
   private

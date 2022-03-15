@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :menu_item do
-    title { "MyString" }
+    title { "Some item" }
     price { "9.99" }
     restaurant { nil }
   end

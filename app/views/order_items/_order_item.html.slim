@@ -1,0 +1,11 @@
+= turbo_frame_tag order_item do
+  .order-item
+    = link_to edit_order_item_path(order_item),
+    class: "text-decoration-none me-2  order-item__card", method: :patch
+      .order-item__title= order_item.menu_item.title
+      .order-item__info
+        .order-item__count= "count: #{order_item.count}"
+        .order-item__price= "price: #{order_item.menu_item.price * order_item.count}"
+    .order-item__controll
+      = button_to t("global.button.delete"), order_item_path(order_item),
+      class: "border-0 bg-transparent order-card__button", method: :delete

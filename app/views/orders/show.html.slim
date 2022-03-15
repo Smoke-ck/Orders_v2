@@ -1,9 +1,9 @@
 .show
   h2= @order.user.email
   h2.show__title= @order.restaurant.title
-  -if current_user.id == @order.user_id
-    = link_to "All items", owner_show_order_path(@order.id), class: "restaurants__new-link"
+  - if current_user.id == @order.user_id
+      = link_to "All items", owner_show_order_path(@order.id), class: "restaurants__new-link"
   = turbo_frame_tag OrderItem.new do
     = render "order_items/form", order_item: @order_item,  path: order_order_items_path(@order), value: 1
   = turbo_frame_tag "order_items" do
-    = render @order_items
+      = render @order_items

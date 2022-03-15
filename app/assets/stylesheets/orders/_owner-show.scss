@@ -1,0 +1,29 @@
+.owner-show {
+  &__wrapper {
+    margin-bottom: 30px;
+  }
+}
+
+.user-info {
+  &__title {
+    cursor: pointer;
+
+    &:hover {
+      color: $hover-color;
+    }
+  }
+
+  &__paid {
+    background-color: $submit-color;
+    border: 0;
+    border-radius: 5px;
+
+    &--not {
+      background-color: $primary-300;
+    }
+
+    &:hover {
+      color: $hover-color;
+    }
+  }
+}

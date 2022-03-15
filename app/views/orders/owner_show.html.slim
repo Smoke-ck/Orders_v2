@@ -1,0 +1,21 @@
+.owner-show
+  .owner-show__wrapper
+    - @order_items.each do |key, value|
+      .owner-show-user-info
+        h4.user-info__title data-bs-toggle="collapse" href="#collapseExample#{value[0].id}" = value[0].user.email
+        .collapse id="collapseExample#{value[0].id}"
+          - value.each do |v|
+            ul
+              li= "#{v.menu_item.title} : #{v.count}"
+              li= "Price: #{v.count * v.menu_item.price}"
+          - @price.each do |k, v|
+            - if key == k
+              p= "Cash: #{v}"
+        .owner-show__paid
+          = button_to @order.paid_users_id.include?((value[0].user.id).to_s) ? "Paid" : 'Not Paid',
+            paid_users_order_path(@order,value[0].user.id), method: :put,
+            class: "#{ @order.paid_users_id.include?((value[0].user.id).to_s) ? "user-info__paid" : "user-info__paid user-info__paid--not" }"
+  .owner-show__info-for-owner
+    h2 All items:
+    - @items.each do |key, value|
+      p= "#{key} : #{value}"

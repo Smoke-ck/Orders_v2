@@ -15,4 +15,4 @@ h2.main__title= @restaurant.title
               class: "text-decoration-none me-2 menu-item__link"
               ||
               = button_to t("global.button.delete"), menu_item_path(item),
-              class: "border-0 bg-transparent menu-item__link", method: :delete, data: { "turbo-frame" => "_top" }
+              class: "border-0 bg-transparent menu-item__link", method: :delete, disabled: item.order_items.any?, data: { "turbo-frame" => "_top" }
