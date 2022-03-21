@@ -1,18 +1,23 @@
 h1.main__title =t('.title')
 = form_for @order do |f|
-  = form_error(@order)
+  .col-sm-5.mx-auto
+    = form_error(@order)
   .mb-3
-    = f.label :title, class: "col-sm-2 form-label"
-    .col-sm-10= f.select :restaurant_id, @restaurants.collect{|r| [r.title, r.id]}, {} ,{class: "form-control"}
+    .col-sm-5.mx-auto
+      = f.label :title, class: "form-label new_order__label"
+      = f.select :restaurant_id, @restaurants.collect{|r| [r.title, r.id]}, {} ,{class: "form-select"}
   .mb-3
-    = f.label :check_out, class: "col-sm-2 form-label"
-    .col-sm-10= f.text_field :check_out, class: "form-control", placeholder: "Check"
+    .col-sm-5.mx-auto
+      = f.label :check_out, class: "form-label new_order__label"
+      = f.text_field :check_out, class: "form-control", placeholder: "Check"
   .mb-3
-    = f.label :body, class: "col-sm-2 form-label"
-    .col-sm-10= f.text_area :body, class: "form-control", placeholder: "Body"
-  .mb-3
-    = f.label :active, class: "col-sm-2 form-label"
-    .col-sm-10= f.check_box :active
-  div class="d-grib gap-2 d-md-block"
-    = f.submit class: "btn btn-primary me-2"
-    = link_to t("global.button.back"), orders_path, class: "btn btn-secondary"
+    .col-sm-5.mx-auto
+      = f.label :body, class: "form-label new_order__label"
+      = f.text_area :body, class: "form-control", placeholder: "Body"
+  .form-check.col-sm-5.mx-auto
+    = f.label :active, class: "form-check-label new_order__label"
+    = f.check_box :active, class: "form-check-input"
+  .d-grib.gap-2.d-md-block
+    .col-sm-5.mx-auto
+      = f.submit class: "btn btn-primary me-2"
+      = link_to t("global.button.back"), orders_path, class: "btn btn-secondary"

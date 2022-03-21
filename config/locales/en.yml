@@ -6,7 +6,7 @@ en:
         attributes:
           order:
             title: Where
-            check_out: Chek out time
+            check_out: Check out time
             body: Body
             active: Active
           restaurant:

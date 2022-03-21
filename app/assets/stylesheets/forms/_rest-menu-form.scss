@@ -1,0 +1,30 @@
+.rest-menu-form {
+
+  &__link {
+    font: $links-fonts;
+
+    &--submit {
+      color: $submit-color;
+      opacity: .7;
+
+      &:hover {
+        opacity: 1;
+        transform: scale(1.05) translateZ(0);
+        transition: 1s;
+      }
+    }
+
+    &--back {
+      color: $link-color;
+
+      &:hover {
+        color: $hover-color;
+      }
+    }
+  }
+
+  &__label {
+    color: $primary-300;
+    font: $span1-fonts;
+  }
+}

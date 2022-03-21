@@ -1,0 +1,117 @@
+.restaurants {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+  &__new-link {
+    color: $link-color;
+    font: $links-fonts;
+    padding-left: 10px;
+    position: relative;
+    text-decoration: none;
+
+    &::before {
+      border-color: transparent transparent transparent #c7b299;
+      border-style: solid;
+      border-width: 4px 0 4px 5px;
+      content: '';
+      left: 0;
+      position: absolute;
+      top: 5px;
+    }
+
+    &:hover {
+      color: $hover-color;
+      transition: 1s;
+
+      &::before {
+        border-color: transparent transparent transparent $hover-color;
+        transition: 1s;
+      }
+    }
+  }
+
+  &:hover > .restaurant-card:not(:hover) {
+    filter: blur(3px);
+    transition: 1s;
+  }
+}
+
+.restaurant-card {
+  background-color: $card-color;
+  border-radius: 5px;
+  margin-top: 10px;
+  opacity: .8;
+
+  &__title {
+    color: $primary-100;
+    font: $h2-fonts;
+    text-align: center;
+  }
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.05) translateZ(0);
+    transition: 1s;
+  }
+
+  &:hover .restaurant-card__controll {
+    background: $background;
+    transition: 1s;
+
+    &::before {
+      border-color: transparent transparent $background;
+      transition: 1s;
+    }
+  }
+
+  &:hover .restaurant-card__title {
+    color: $hover-color;
+    transition: 1s;
+  }
+
+  &__content {
+    padding: 20px;
+  }
+
+  &__controll {
+    background-color: $card-color;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 10px 20px;
+    position: relative;
+
+    &::before {
+      border-color: transparent transparent $card-color;
+      border-style: solid;
+      border-width: 0 15px 10px;
+      content: '';
+      position: absolute;
+      top: -9px;
+    }
+  }
+
+  &__link {
+    color: $link-color;
+    font: $links-fonts;
+
+    &--info {
+      color: $link-info-color;
+
+      &:hover {
+        color: $hover-color;
+      }
+    }
+
+    &:hover {
+      color: $hover-color;
+    }
+
+    &:disabled {
+      color: rgb(136, 132, 132);
+    }
+  }
+}
+
+@import '../forms/rest-menu-form';
+@import 'new-restaurant';

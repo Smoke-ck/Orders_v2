@@ -1,4 +1,4 @@
 = turbo_frame_tag dom_id(@restaurant) do
-  .card-body.restaurants__new
-    h2.card__title =t(".title")
+  .card-body.restaurants-new
+    h2.restaurants-new__title=t(".title")
     = render "form", restaurant: @restaurant

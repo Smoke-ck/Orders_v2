@@ -1,0 +1,36 @@
+.menu-item {
+  border-top: $card-border;
+  border-top-style: dashed;
+  margin-top: 10px;
+
+  &__title {
+    color: $primary-100;
+    font: $h2-fonts;
+
+    &--price {
+      color: $primary-300;
+    }
+  }
+
+  &__content {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__controll {
+    align-items: center;
+    display: flex;
+  }
+
+  &__link {
+    color: $link-color;
+    font: $links-fonts;
+
+    &:hover {
+      color: $hover-color;
+    }
+  }
+}
+
+@import 'new-menu-items';

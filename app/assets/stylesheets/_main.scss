@@ -1,0 +1,22 @@
+.main {
+  &__title {
+    color: $primary-400;
+    font: $h1-fonts;
+    text-align: center;
+  }
+
+  &__user-name {
+    color: #a12712;
+    font: $h2-fonts;
+  }
+}
+
+.card-body {
+  &__controll {
+    display: flex;
+
+    &--button {
+      margin-right: 10px;
+    }
+  }
+}

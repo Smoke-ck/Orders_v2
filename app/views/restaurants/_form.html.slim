@@ -6,5 +6,7 @@
   .mb-3
     .col-sm-10= r.text_field :title, class: "form-control", placeholder: "Title", autofocus: true
   .col-sm-10.
-    = r.submit t("global.button.save"), class: "link-success bg-transparent border-0 me-2"
-    = link_to t("global.button.back"), :back, class: "text-decoration-none link-dark", data: { "turbo-frame" => "_top" }
+    = r.submit t("global.button.save"),
+    class: "bg-transparent border-0 me-2 rest-menu-form__link rest-menu-form__link--submit"
+    = link_to t("global.button.back"), :back,
+    class: "text-decoration-none rest-menu-form__link rest-menu-form__link--back", data: { "turbo-frame" => "_top" }

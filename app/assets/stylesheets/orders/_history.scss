@@ -1,0 +1,10 @@
+.history {
+  &__orders-list {
+    list-style-type: none;
+  }
+
+  &__order-title {
+    color: $primary-200;
+    font: $h2-fonts;
+  }
+}
