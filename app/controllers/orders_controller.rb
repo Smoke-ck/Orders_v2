@@ -2,22 +2,24 @@
 
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :load_all_restaurant, only: %i[new create]
+  before_action :load_order, only: %i[actived destroy]
+
   def index
-    @user = current_user
-    @orders = current_user.orders.order(created_at: :desc)
+    @orders = current_user.orders.includes(:restaurant).order(created_at: :desc)
   end
 
   def history
-    @orders = current_user.orders.where(active: false)
+    @orders = current_user.orders.includes(:restaurant).where(active: false)
   end
 
   def active
     @user = current_user
-    @orders = Order.where(active: true)
+    @orders = Order.where(active: true).includes(:restaurant)
   end
 
   def show
-    @order = current_user.orders.find_by id: params[:id]
+    @order = current_user.orders.includes(:restaurant).find_by id: params[:id]
   end
 
   def new
@@ -38,7 +40,6 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order = current_user.orders.find_by id: params[:id]
     @order.destroy
 
     respond_to do |format|
@@ -48,7 +49,6 @@ class OrdersController < ApplicationController
   end
 
   def actived
-    @order = current_user.orders.find_by id: params[:id]
     if @order.active == true
       @order.update(active: false)
     else
@@ -60,6 +60,14 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:title, :check_out, :body, :active)
+    params.require(:order).permit(:check_out, :body, :active, :restaurant_id)
+  end
+
+  def load_all_restaurant
+    @restaurants = Restaurant.all
+  end
+
+  def load_order
+    @order = current_user.orders.find_by id: params[:id]
   end
 end

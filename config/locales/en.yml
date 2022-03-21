@@ -9,6 +9,11 @@ en:
             check_out: Chek out time
             body: Body
             active: Active
+          restaurant:
+            title: Title
+          menu_item:
+            title: Title
+            price: Price
         errors:
           models:
             order:
@@ -20,8 +25,10 @@ en:
       show: Show
       delete: Delete
       active: Active
+      edit: Edit
       done: Done
       back: Back
+      save: Save
     status:
       active: "Status: Active"
       dode: "Status: Done"
@@ -30,6 +37,7 @@ en:
     new: Create new order
     current: Active order
     history: History
+    restaurant: Restaurants
   orders:
     index:
       title: All orders
@@ -40,3 +48,20 @@ en:
       title: Active orders
     history:
       title: History
+  restaurants:
+    index:
+      title: All restaurants
+      add_button: New restaurant
+    new:
+      title: New Restaurant
+      add_button: Add restaurant
+    edit:
+      title: Edit Restaurant
+    show:
+      add_button: Add item
+      item_price: Price
+  menu_items:
+    new:
+      title: New Item
+    edit:
+      title: Edit Item

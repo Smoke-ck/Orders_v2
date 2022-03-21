@@ -28,10 +28,14 @@ RSpec.describe "Home page", chrome: true do
     expect(page).to have_link "History"
     expect(page).to have_link "Log out"
 
+    click_link "Restaurants"
+    click_link "New restaurant"
+    fill_in "Title", with: "McDonalds"
+    click_button "Save"
+
     click_link "Create new order"
     expect(page).to have_content "New order"
     expect(page).to have_content "Where"
-    expect(page).to have_field "Where"
     expect(page).to have_content "Chek out time"
     expect(page).to have_field "Check"
     expect(page).to have_content "Body"
@@ -40,18 +44,17 @@ RSpec.describe "Home page", chrome: true do
     expect(page).to have_link "Back"
 
     click_button "Create Order"
-    expect(page).to have_content "Where can't be blank"
-    expect(page).to have_content "Where is too short (minimum is 2 characters)"
     expect(page).to have_content "Body can't be blank"
     expect(page).to have_content "Body is too short (minimum is 5 characters)"
     expect(page).to have_content "Chek out time required and must be time"
 
-    fill_in "Where", with: "McDonalds"
+    find("#order_restaurant_id option[value='1']").select_option
     fill_in "Check", with: "13:00"
     fill_in "Body", with: "Some text"
     check("Active")
 
     click_button "Create Order"
+    expect(page).to have_content "Order was successfully created."
     expect(page).to have_content "McDonalds"
     expect(page).to have_content "Some text"
     expect(page).to have_content "Check out time: 2022-01-31 13:00:00 UTC"
@@ -96,10 +99,10 @@ RSpec.describe "Home page", chrome: true do
     expect(page).to have_button "Done"
 
     click_button "Delete"
+    expect(page).to have_content "Order was successfully destroyed."
     expect(page).to have_content "benjohnson@gmail.com"
 
     click_link "Create new order"
-    fill_in "Where", with: "McDonalds"
     fill_in "Check", with: "13:00"
     fill_in "Body", with: "Some text"
     check("Active")
@@ -139,14 +142,19 @@ RSpec.describe "Home page", chrome: true do
     expect(page).to have_content "benjohnson@gmail.com"
     expect(page).to have_content "Check out time: 2022-01-31 13:00:00 UTC"
 
+    click_link "Restaurants"
+    click_link "New restaurant"
+    fill_in "Title", with: "KFC"
+    click_button "Save"
+
     click_link "Create new order"
-    fill_in "Where", with: "From..."
+    find("#order_restaurant_id option[value='2']").select_option
     fill_in "Check", with: "13:00"
     fill_in "Body", with: "Some text"
     check("Active")
 
     click_button "Create Order"
-    expect(page).to have_content "From..."
+    expect(page).to have_content "KFC"
     expect(page).to have_content "Some text"
     expect(page).to have_content "Check out time: 2022-01-31 13:00:00 UTC"
     expect(page).to have_content "Status: Active"
@@ -158,11 +166,14 @@ RSpec.describe "Home page", chrome: true do
     expect(page).to have_content "benjohnson@gmail.com"
     expect(page).to have_content "Check out time: 2022-01-31 13:00:00 UTC"
 
-    expect(page).to have_content "From..."
+    expect(page).to have_content "KFC"
     expect(page).to have_content "jonjohnson@gmail.com"
     expect(page).to have_content "Check out time: 2022-01-31 13:00:00 UTC"
     expect(page).to have_link "Show"
     expect(page).to have_button "Delete"
     expect(page).to have_button "Active"
+
+    click_link "Restaurants"
+    expect(page).to have_button "Delete",disabled: true
   end
 end

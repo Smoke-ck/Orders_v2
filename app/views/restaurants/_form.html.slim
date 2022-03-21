@@ -1,0 +1,10 @@
+= form_for restaurant , data: { "turbo-frame" => "_top" } do |r|
+  - if @restaurant.errors.any?
+    ul
+      - @restaurant.errors.full_messages.each do |msg|
+        li= msg
+  .mb-3
+    .col-sm-10= r.text_field :title, class: "form-control", placeholder: "Title", autofocus: true
+  .col-sm-10.
+    = r.submit t("global.button.save"), class: "link-success bg-transparent border-0 me-2"
+    = link_to t("global.button.back"), :back, class: "text-decoration-none link-dark", data: { "turbo-frame" => "_top" }

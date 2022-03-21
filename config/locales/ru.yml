@@ -9,6 +9,11 @@ ru:
             check_out: Активний до
             body: Текст
             active: Активный
+          restaurant:
+            title: Название
+          menu_item:
+            title: Название
+            price: Цена
         errors:
           models:
             order:
@@ -20,8 +25,10 @@ ru:
       show: Просмотреть
       delete: Удалить
       active: Активно
+      edit: Радактировать
       done: Выполнено
       back: Назад
+      save: Сохранить
     status:
       active: "Статус: Активно"
       dode: "Статус: Выполнено"
@@ -30,6 +37,7 @@ ru:
     new: Создать новый ордер
     current: Активный ордер
     history: История выполненых
+    restaurant: Рестораны
   orders:
     index:
       title: Все ордера
@@ -40,3 +48,20 @@ ru:
       title: Активный ордер
     history:
       title: История выполненых
+  restaurants:
+    index:
+      title: Список ресторанов
+      add_button: Новый ресторан
+    new:
+      title: Новый ресторан
+      add_button: Добавить ресторан
+    edit:
+      title: Редактировать
+    show:
+      add_button: Добавить элемент в меню
+      item_price: Цена
+  menu_items:
+    new:
+      title: Новый элемент меню
+    edit:
+      title: Редактировать элемент

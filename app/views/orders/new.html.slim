@@ -1,12 +1,9 @@
 h1.main__title =t('.title')
 = form_for @order do |f|
-  - if @order.errors.any?
-    ul
-      - @order.errors.full_messages.each do |msg|
-        li= msg 
+  = form_error(@order)
   .mb-3
     = f.label :title, class: "col-sm-2 form-label"
-    .col-sm-10= f.text_field :title, class: "form-control", placeholder: "Where"
+    .col-sm-10= f.select :restaurant_id, @restaurants.collect{|r| [r.title, r.id]}, {} ,{class: "form-control"}
   .mb-3
     = f.label :check_out, class: "col-sm-2 form-label"
     .col-sm-10= f.text_field :check_out, class: "form-control", placeholder: "Check"
@@ -17,5 +14,5 @@ h1.main__title =t('.title')
     = f.label :active, class: "col-sm-2 form-label"
     .col-sm-10= f.check_box :active
   div class="d-grib gap-2 d-md-block"
-    = f.submit class: "btn btn-primary mr-2"
+    = f.submit class: "btn btn-primary me-2"
     = link_to t("global.button.back"), orders_path, class: "btn btn-secondary"

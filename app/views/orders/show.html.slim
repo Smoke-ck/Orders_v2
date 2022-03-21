@@ -1,5 +1,5 @@
 .show
-  h2.show__title= @order.title
+  h2.show__title= @order.restaurant.title
   p= @order.body
   p Check out time: #{@order.check_out}
   p= @order.active == true ? t("global.status.active") : t("global.status.done")
