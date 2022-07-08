@@ -1,3 +1,5 @@
+
+  
 h1.main__title =t('.title')
 = form_for @order do |f|
   .col-sm-5.mx-auto
@@ -16,7 +18,7 @@ h1.main__title =t('.title')
       = f.text_area :body, class: "form-control", placeholder: "Body"
   .form-check.col-sm-5.mx-auto
     = f.label :active, class: "form-check-label new_order__label"
-    = f.check_box :active, class: "form-check-input"
+    = f.check_box :active, class: "form-check-input", checked: true
   .d-grib.gap-2.d-md-block
     .col-sm-5.mx-auto
       = f.submit class: "btn btn-primary me-2"

@@ -1,0 +1,37 @@
+.order-item {
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 5px;
+  width: 635px;
+
+  &__card {
+    align-items: center;
+    color: #000;
+    display: flex;
+    width: 100%;
+
+    &:hover {
+      color: $hover-color;
+    }
+  }
+
+  &__title {
+    margin-left: 10px;
+    width: 200px;
+  }
+
+  &__info {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+  }
+
+  &__controll {
+    align-items: center;
+    display: flex;
+  }
+}

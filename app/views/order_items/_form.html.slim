@@ -1,0 +1,10 @@
+= form_for order_item, url: path, data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } do |f|
+  .col-sm-5
+    = form_error(@order_item)
+  .row.g-0.mb-2
+    .col-sm-5.p-0.me-1
+      = f.select :menu_item_id, @order.restaurant.menu_items.collect{|r| [r.title, r.id]}, {multiple: true}, {class: "form-select"}
+    .col-sm-1.p-0.me-1
+      = f.text_field :count, class: "form-control new_order_item__count", placeholder: "count", value: value
+    .col-sm-1.p-0
+      = f.submit class: "btn btn-primary me-2 order_items_submit"

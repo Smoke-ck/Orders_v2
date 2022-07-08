@@ -30,6 +30,10 @@
     &:hover {
       color: $hover-color;
     }
+
+    &:disabled {
+      color: rgb(136, 132, 132);
+    }
   }
 }
 

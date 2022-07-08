@@ -12,8 +12,13 @@ Rails.application.routes.draw do
   end
   get "orders/active"
   get "orders/history"
-  resources :orders do
-    put :actived, on: :member
+  resources :orders, shallow: true do
+    member do
+      get :owner_show
+      put :actived
+      put :paid_users
+    end
+    resources :order_items, except: %i[index show]
   end
   resources :restaurants, shallow: true do
     resources :menu_items, except: %i[index show]

@@ -37,6 +37,16 @@ RSpec.describe "Orders", type: :request do
     end
   end
 
+  describe "#owner-show" do
+    let(:url) { owner_show_order_path(order) }
+
+    it_behaves_like "i18n"
+    it "renders a successful response" do
+      get url
+      expect(response).to be_successful
+    end
+  end
+
   describe "#new" do
     let(:url) { new_order_path }
 
@@ -55,6 +65,15 @@ RSpec.describe "Orders", type: :request do
       get orders_active_url
       expect(response).to be_successful
     end
+  end
+
+  describe "#users paid" do
+    let(:url) { paid_users_order_path(order) }
+
+      it "renders a successful responser" do
+        put url, params: { order: attributes}
+        expect(response).to redirect_to(owner_show_order_path(order))
+      end
   end
 
   describe "#history" do

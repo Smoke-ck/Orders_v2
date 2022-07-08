@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
+  include OrdersOrderItems
   before_action :authenticate_user!
   before_action :load_all_restaurant, only: %i[new create]
-  before_action :load_order, only: %i[actived destroy]
+  before_action :load_order, only: %i[actived destroy show paid_users]
+  before_action :load_order_restaurant, only: %i[show owner_show]
+  before_action :redirect_to_show, only: :owner_show
 
   def index
     @orders = current_user.orders.includes(:restaurant).order(created_at: :desc)
@@ -19,7 +22,16 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = current_user.orders.includes(:restaurant).find_by id: params[:id]
+    @order_items = current_user.order_items.where(order_id: params[:id])
+    @order_item = @order.order_items.build
+  end
+
+  def owner_show
+    @order_items = @order.order_items.group_by(&:user_id)
+    @price = OrderItemsPriceService.call(@order_items)
+
+    all_order_items = @order.order_items.group(:menu_item_id).sum(:count)
+    @items = AllOrderItemsPriceService.call(all_order_items, @order.restaurant.menu_items)
   end
 
   def new
@@ -56,6 +68,16 @@ class OrdersController < ApplicationController
     redirect_to orders_path
   end
 
+  def paid_users
+    if @order.paid_users_id.include?(params[:format])
+      @order.paid_users_id.delete(params[:format])
+    else
+      @order.paid_users_id << params[:format]
+    end
+    @order.save
+    redirect_to owner_show_order_path(@order.id)
+  end
+
   private
 
   def order_params
@@ -67,6 +89,14 @@ class OrdersController < ApplicationController
   end
 
   def load_order
-    @order = current_user.orders.find_by id: params[:id]
+    @order = Order.find_by id: params[:id]
+  end
+
+  def load_order_restaurant
+    @order = Order.includes(restaurant: :menu_items).find_by(id: params[:id])
+  end
+
+  def redirect_to_show
+    redirect_to action: :show if current_user.id != @order.user_id
   end
 end
