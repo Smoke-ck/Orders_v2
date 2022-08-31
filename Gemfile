@@ -23,6 +23,9 @@ gem "puma", "~> 5.0"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
+
+gem "coffee-rails", "~> 4.2"
+gem "jquery-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 

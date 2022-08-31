@@ -1,7 +1,7 @@
 = turbo_frame_tag order_item do
   .order-item
     = link_to edit_order_item_path(order_item),
-    class: "text-decoration-none me-2  order-item__card", method: :patch
+    class: "text-decoration-none me-2 order-item__card"
       .order-item__title= order_item.menu_item.title
       .order-item__info
         .order-item__count= "count: #{order_item.count}"
