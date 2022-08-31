@@ -23,6 +23,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       # Add or replace dependency steps here
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@8f312efe1262fb463d906e9bf040319394c18d3e # v1.92
         with:
@@ -32,6 +35,10 @@ jobs:
         run: |
           bundler exec rails db:create RAILS_ENV=test
           bundler exec rails db:migrate RAILS_ENV=test
+      - name: Install dependencies and precompile assets
+        run: |
+          bundle install --jobs 4 --retry 3
+          bundle exec rails assets:precompile
       - name: Run tests
         run: CAPYBARA_BROWSER=rack_test bundle exec rspec
   lint:

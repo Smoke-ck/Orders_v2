@@ -1,12 +1,14 @@
-= form_for restaurant , data: { "turbo-frame" => "_top" } do |r|
-  - if @restaurant.errors.any?
-    ul
-      - @restaurant.errors.full_messages.each do |msg|
-        li= msg
-  .mb-3
-    .col-sm-10= r.text_field :title, class: "form-control", placeholder: "Title", autofocus: true
-  .col-sm-10.
-    = r.submit t("global.button.save"),
-    class: "bg-transparent border-0 me-2 rest-menu-form__link rest-menu-form__link--submit"
-    = link_to t("global.button.back"), :back,
-    class: "text-decoration-none rest-menu-form__link rest-menu-form__link--back", data: { "turbo-frame" => "_top" }
+= turbo_frame_tag @restaurant do
+  .card-body.restaurants-new
+    = form_for restaurant do |r|
+      - if @restaurant.errors.any?
+        ul
+          - @restaurant.errors.full_messages.each do |msg|
+            li= msg
+      .mb-3
+        .col-sm-10= r.text_field :title, class: "form-control", placeholder: "Title", autofocus: true
+      .col-sm-10.
+        = r.submit t("global.button.save"),
+        class: "bg-transparent border-0 me-2 rest-menu-form__link rest-menu-form__link--submit"
+        = link_to t("global.button.back"), :back,
+        class: "text-decoration-none rest-menu-form__link rest-menu-form__link--back"
