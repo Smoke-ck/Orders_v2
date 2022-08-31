@@ -4,6 +4,7 @@ class OrderItemsController < ApplicationController
   before_action :load_order, only: %i[new create]
   before_action :load_order_item, only: %i[edit update destroy]
   before_action :load_restaurant, only: %i[edit update]
+  before_action :load_menu_items, only: %i[new create edit update]
 
   def new
     @order_item = @order.order_items.build
@@ -60,5 +61,9 @@ class OrderItemsController < ApplicationController
   def load_restaurant
     @order_item = OrderItem.find params[:id]
     @order = @order_item.order
+  end
+
+  def load_menu_items
+    @menu_items = @order.restaurant.menu_items
   end
 end

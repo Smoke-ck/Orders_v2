@@ -35,3 +35,9 @@
     display: flex;
   }
 }
+
+.new_order_item {
+  &__count {
+    height: 30px !important;
+  }
+}

@@ -21,11 +21,10 @@ class RestaurantsController < ApplicationController
   def update
     respond_to do |format|
       if @restaurant.update(restaurant_params)
+        format.turbo_stream { flash.now[:notice] = "Restaurant was successfully edited." }
         format.html { redirect_to restaurants_path, alert: "Restaurant was successfully edited." }
-        format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -34,11 +33,10 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.create(restaurant_params)
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to restaurants_path, notice: "Restaurant was successfully created." }
-        format.json { render :show, status: :created, location: @restaurant }
+        format.turbo_stream { flash.now[:notice] = "Restaurant was successfully created." }
+        # format.html { redirect_to restaurants_path, notice: "Restaurant was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,7 +46,6 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to restaurants_path, notice: "Restaurant was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
