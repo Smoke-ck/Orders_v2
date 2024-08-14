@@ -1,5 +1,3 @@
  = form_for order, url: actived_order_path(order), method: :put do |f|
-  .switch
-    = f.check_box :active, class: "switch__onOff", id: "demo"
-    = f.label :active, "&nbsp;".html_safe, class: "switch__lable", for: "demo"
-    = f.submit "submit", class:"switch__checkbox-submit"
+  = f.check_box :active, class: "switch__onOff", id: "demo"
+
