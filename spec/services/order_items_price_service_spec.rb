@@ -15,5 +15,5 @@ RSpec.describe OrderItemsPriceService do
   end
   let(:items) {described_class.new order_items.group_by(&:user_id)}
 
-  it { expect(items.call).to eq({ 1 => 9, 2 => 18 }) }
+  it { expect(items.call).to eq({ user.id => 9, other_user.id => 18 }) }
 end

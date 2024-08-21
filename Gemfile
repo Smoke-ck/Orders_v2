@@ -9,9 +9,9 @@ ruby "3.0.0"
 gem "rails", "~> 7.0.1"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+gem "cssbundling-rails", "~> 1.0"
+gem "jsbundling-rails", "~> 1.0"
 gem "sprockets-rails"
-gem 'jsbundling-rails', '~> 1.0'
-gem 'cssbundling-rails', '~> 1.0'
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -19,10 +19,8 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
-
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
-
 
 gem "coffee-rails", "~> 4.2"
 gem "jquery-rails"
@@ -82,8 +80,8 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
+  gem "cuprite"
   gem "selenium-webdriver"
   gem "timecop"
   gem "webdrivers"
-  gem "cuprite"
 end

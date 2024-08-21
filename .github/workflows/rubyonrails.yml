@@ -35,10 +35,12 @@ jobs:
         run: |
           bundler exec rails db:create RAILS_ENV=test
           bundler exec rails db:migrate RAILS_ENV=test
-      - name: Install dependencies and precompile assets
+      - name: Install JS dependencies
+        run: yarn install
+      - name: Assets
         run: |
-          bundle install --jobs 4 --retry 3
-          bundle exec rails assets:precompile
+          yarn build:css
+          yarn build
       - name: Run tests
         run: CAPYBARA_BROWSER=rack_test bundle exec rspec
   lint:

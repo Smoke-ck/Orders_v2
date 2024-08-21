@@ -34,7 +34,7 @@ class RestaurantsController < ApplicationController
     respond_to do |format|
       if @restaurant.save
         format.turbo_stream { flash.now[:notice] = "Restaurant was successfully created." }
-        # format.html { redirect_to restaurants_path, notice: "Restaurant was successfully created." }
+        format.html { redirect_to restaurants_path, notice: "Restaurant was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

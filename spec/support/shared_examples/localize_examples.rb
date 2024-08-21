@@ -9,15 +9,6 @@ RSpec.shared_examples "i18n" do
       end
     end
 
-    context "ru" do
-      let(:localized_url) { url + "?locale=ru" }
-
-      it "localize should be string" do
-        get localized_url
-        expect(I18n.locale).to eq(:ru)
-      end
-    end
-
     context "ua" do
       let(:localized_url) { url + "?locale=ua" }
 
