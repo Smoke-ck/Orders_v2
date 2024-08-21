@@ -16,7 +16,7 @@ RSpec.configure do |config|
   #   Capybara.current_driver = ENV["CAPYBARA_BROWSER"]&.to_sym || :selenium_chrome
   # end
 
-  config.before(:each, type: :feature) do |spec|
+  config.before(:each, type: :feature) do ||
     page.driver.resize_window(1920, 1080)
   end
   config.after(:each) do
