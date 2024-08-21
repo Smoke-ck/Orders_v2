@@ -41,7 +41,7 @@ RSpec.describe "Home page", chrome: true do
     context "when editing a restaurant" do
       before do
         click_link "Restaurants"
-        click_link "Edit"
+        find("a[href='/restaurants/#{restaurant.id}/edit']").click
       end
 
       it "allows editing the restaurant title" do
@@ -91,7 +91,7 @@ RSpec.describe "Home page", chrome: true do
       end
 
       it "allows editing and deleting items" do
-        click_link "Edit"
+        find("a[href='/menu_items/#{menu_item.id}/edit']").click
         fill_in "Title", with: "New Burger"
         fill_in "Price", with: "10.10"
 
