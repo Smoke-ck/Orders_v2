@@ -3,7 +3,7 @@ require "rails_helper"
 require "spec_helper"
 
 RSpec.describe "Home page", chrome: true do
-  let(:user) { create(:user, email: "BenJohnson@gmail.com", password: "123456") }
+  let(:user) { create(:user, email: "BenJohnson@gmail.com", password: "123456", role: "admin") }
   let!(:restaurant1) { create(:restaurant, title: "McDonalds") }
   let!(:restaurant2) { create(:restaurant, title: "KFC") }
 
