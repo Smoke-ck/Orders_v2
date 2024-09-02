@@ -5,6 +5,10 @@
     .col-sm-10= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true
     = f.label :price, class: "col-sm-2 form-label rest-menu-form__label"
     .col-sm-10= f.text_field :price, class: "form-control", placeholder: "Price", autofocus: true
+     = f.label :price, class: "col-sm-2 form-label rest-menu-form__label"
+    .form-check.col-sm-5
+      = f.label :active, class: "form-check-label new_order__label"
+      = f.check_box :active, class: "form-check-input"
   div class="d-grib gap-2 d-md-block"
     = f.submit t("global.button.save"),
     class: "bg-transparent border-0 me-2 rest-menu-form__link rest-menu-form__link--submit"

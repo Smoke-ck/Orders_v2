@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
   def show
     @order_items = current_user.order_items.where(order_id: params[:id])
     @order_item = @order.order_items.build
-    @menu_items = @order.restaurant.menu_items
+    @menu_items = @order.restaurant.menu_items.where(active: true)
   end
 
   def owner_show
