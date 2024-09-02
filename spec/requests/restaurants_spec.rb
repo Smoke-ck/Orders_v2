@@ -8,7 +8,7 @@ RSpec.describe "Restaurants", type: :request do
       title: "KFC"
     }
   end
-  let(:user) { create(:user, email: "BenJohns@gmail.com", password: "123456") }
+  let(:user) { create(:user, email: "BenJohns@gmail.com", password: "123456", role: "admin") }
   let(:restaurant) { create(:restaurant) }
 
   before { sign_in user }

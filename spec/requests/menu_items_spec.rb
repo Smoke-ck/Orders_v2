@@ -10,7 +10,7 @@ RSpec.describe "MenuItems", type: :request do
       restaurant_id: restaurant.id
     }
   end
-  let(:user) { create(:user, email: "BenJohns@gmail.com", password: "123456") }
+  let(:user) { create(:user, email: "BenJohns@gmail.com", password: "123456", role: "admin") }
   let(:restaurant) { create(:restaurant) }
   let(:menu_item) { create(:menu_item, restaurant: restaurant) }
 
