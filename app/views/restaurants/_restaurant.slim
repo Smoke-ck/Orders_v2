@@ -2,11 +2,13 @@
   .restaurant-card
     .restaurant-card__content
       h2.restaurant-card__title= restaurant.title
-      = link_to t("global.button.edit"), edit_restaurant_path(restaurant),
-      class: "text-decoration-none restaurant-card__link"
+      - if current_user.can_access_admin_views?
+        = link_to t("global.button.edit"), edit_restaurant_path(restaurant),
+        class: "text-decoration-none restaurant-card__link"
     .card-body__controll.restaurant-card__controll
       = link_to t("global.button.show"), restaurant, data: { "turbo-frame" => "_top" },
       class: "text-decoration-none me-2 restaurant-card__link--info"
-      ||
-      = button_to t("global.button.delete"), restaurant_path(restaurant),
-      class: "border-0 bg-transparent restaurant-card__link", method: :delete, disabled: restaurant.orders.any?, data: { "turbo-frame" => "_top" }
+      - if current_user.can_access_admin_views?
+        ||
+        = button_to t("global.button.delete"), restaurant_path(restaurant),
+        class: "border-0 bg-transparent restaurant-card__link", method: :delete, disabled: restaurant.orders.any?, data: { "turbo-frame" => "_top" }

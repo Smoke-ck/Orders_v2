@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class MenuItemsController < ApplicationController
+  include AccessControl
+
   before_action :authenticate_user!
   before_action :load_restaurant, only: %i[new create]
   before_action :load_menu_item, only: %i[edit update destroy]
