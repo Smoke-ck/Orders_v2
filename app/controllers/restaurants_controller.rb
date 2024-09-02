@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class RestaurantsController < ApplicationController
+  include AccessControl
+
   before_action :authenticate_user!
   before_action :load_restaurant, only: %i[edit update destroy]
 

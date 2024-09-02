@@ -13,4 +13,8 @@ class User < ApplicationRecord
   enum otp_module: { disabled: 0, enabled: 1 }, _prefix: true
   enum role: { user: 0, admin: 1, moderator: 2 }
   attr_accessor :otp_code_token
+
+  def can_access_admin_views?
+    admin? || moderator?
+  end
 end
