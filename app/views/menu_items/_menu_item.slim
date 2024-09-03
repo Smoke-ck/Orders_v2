@@ -4,9 +4,9 @@
       .
         h2.menu-item__title= "#{menu_item.title}"
         h2.menu-item__title.menu-item__title--price= "#{t("restaurants.show.item_price")}: #{menu_item.price}"
-      - if current_user.can_access_admin_views?
-        .menu-item__controll
-          .me-2 = menu_item.active? ? "active" : "disable"
+      .menu-item__controll
+        .me-2.menu-item__title--price = menu_item.active? ? "Active" : "Disable"
+        - if current_user.can_access_admin_views?
           ||
           = link_to t("global.button.edit"), edit_menu_item_path(menu_item),
           class: "text-decoration-none me-2 ms-2 menu-item__link"
